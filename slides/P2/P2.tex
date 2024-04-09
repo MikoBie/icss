@@ -79,8 +79,8 @@
 \setbeamertemplate{items}[square]
 \setbeamercovered{transparent} 
 
-\title[]{Computational Social Science: An Introduction to Data Science}
-\subtitle{}
+\title[]{Introduction to Computational Social Science}
+\subtitle{Introduction to Data Science}
 \author[]{Mikołaj Biesaga\\ \small{\color{blue}{\href{mailto:m.biesaga@uw.edu.pl}{m.biesaga@uw.edu.pl}}}}
 \institute{\includegraphics[width = 4 cm]{uw.png}}
 \date{\today}
@@ -280,6 +280,68 @@
     }
 \end{frame}
 
+\subsection{HTML}
+
+\begin{frame}
+    \frametitle{HyperText Markup Language}
+    \begin{definition}{}
+        \emph{HyperText Markup Language} (HTML) is the standard markup language for
+        documents designed to be displayed in a web browser. It defines the
+        content and structure of web content. It is often assisted by
+        technologies such as Cascading Style Sheets (CSS) and scripting
+        languages such as JavaScript.
+    \end{definition}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{HyperText Markup Language}
+\begin{minted}[fontsize=\footnotesize]{html}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Justyna Kowalczyk fandom
+        </title>
+    </head>
+    <body>
+        <h1>
+            Why Justyna Kowalczyk is the best?
+        </h1>
+        <p>
+            Because she is just <b>the best</b> cross-country 
+            skier in the history of the sport. You can learn
+            more about her amazing achievements visiting
+            her Wikipedia webpage:
+            https://pl.wikipedia.org/wiki/Justyna_Kowalczyk.
+        </p>
+    </body>
+</html>
+\end{minted}
+\end{frame}
+
+\begin{frame}
+    \frametitle{HyperText Markup Language}
+    \only<+>{
+        \framesubtitle{What are tags?}
+        Tags are used to mark up the start of an HTML element and they are enclosed
+        in \textbf{angle brackets}. The most important is the <html> tag. Inside
+        this tag, between <html> and </html> all other elements live. In the 
+        example from the previous slide we had the following tags:
+        \begin{itemize}
+            \item {<head></head>} -- element contains meta-information about the document
+            \item {<title></title>} -- element specifies a title for the document
+            \item {<body></body>} -- element contains the visible page content
+            \item {<h1></h1>} -- element defines a large heading
+            \item {<p></p>} -- element define a paragraph
+            \item {<b></b>} -- element define a boldface
+        \end{itemize}
+    }
+    \only<+>{
+        \centering
+        \includegraphics[width = .6\textwidth]{dom.png}
+    }
+\end{frame}
+
 \subsection{API}
 
 \begin{frame}
@@ -445,14 +507,6 @@
             \item entities analysis
     \end{itemize}
     }
-\end{frame}
-
-\begin{frame}
-    \frametitle{For the next week}
-    \begin{itemize}
-       \item \textcolor{blue}{\href{https://www.theguardian.com/us-news/2015/dec/11/senator-ted-cruz-president-campaign-facebook-user-data}{Ted Cruz using firm that harvested data on millions of unwitting Facebook users}}
-       \item Kosinski, M., Stillwell, D., \& Graepel, T. (2013). Private traits and attributes are predictable from digital records of human behavior. \textit{Proceedings of the National Academy of Sciences}, \textit{110(15)}, 5802–5805. \textcolor{blue}{\href{https://doi.org/10.1073/pnas.1218772110}{https://doi.org/10.1073/pnas.1218772110}}
-    \end{itemize}
 \end{frame}
 
 \end{document}
