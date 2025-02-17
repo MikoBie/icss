@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
 \usepackage{ulem}
 \usepackage{tikz}
 \usepackage{booktabs}
@@ -72,19 +72,13 @@
     \only<2>{
         \framesubtitle{Current Book}
         \begin{center}
-            \includegraphics[width = .4\textwidth]{the_road.jpg}
+            \includegraphics[width = .4\textwidth]{playground.jpg}
         \end{center}
     }
     \only<3>{
-        \framesubtitle{Next Graphic Novel}
+        \framesubtitle{Current Series}
         \begin{center}
-            \includegraphics[width = .5\textwidth]{the_road_comics.jpg}
-        \end{center}
-    }
-    \only<4>{
-        \framesubtitle{Next Series}
-        \begin{center}
-            \includegraphics[width = .45\textwidth]{3_body_problem.jpg}
+            \includegraphics[width = .4\textwidth]{severance.jpg}
         \end{center}
     }
 \end{frame}
@@ -96,12 +90,12 @@
     \begin{description}[Google Classroom:]
         \item [Office Hours:] write me an email before coming
         \item [Emails:] the official info will go through emails
-        \item [GitHub:] scripts (notebooks) will be posted on GitHub
         \item [Google Classroom:] materials and presentations will be posted on
         Google Classroom
+        \item [GitHub:] scripts (notebooks) will be posted on GitHub
     \end{description}
     \alert{I will try to answer your inquiries as soon as possible but do not
-    count on an immediate response, especially right before the deadlines.}
+    count on an immediate response.}
 \end{frame}
 \begin{frame}
     \frametitle{Emails}
@@ -110,93 +104,52 @@
 \begin{frame}
     \frametitle{Workflow}
     \begin{enumerate}
-        \item Presentation of the basic concepts in the classroom
-        \item Exercises in the classroom
-        \item Homework assignments requiring modifying the work done in the classroom
-        \item Final research project
+        \item Introduction to Computational Methods (C1-C6, C9)
+        \begin{itemize}
+            \item Readings at home
+            \item Discussion in the classroom
+        \end{itemize}
+        \item Working with GDELT API (C7-C8)
+        \item Presentations of Scientific Papers (C10-C15)
     \end{enumerate}
 \end{frame}
 \begin{frame}
     \frametitle{Assessment Criteria}
     \begin{itemize}
-        \item The final grade will be determined based on \alert{6 homework
-        assignments} and \alert{written project proposal}.
-        \item The first 4 homework (after classes: 2, 3, 4, and 5) will be scored from 0 to 10 points and the
-        other two (after classes: 12 and 15) from 0 to 15 points.
-        \item The research project will require writing a research proposal that uses the tools and methods discussed during the class. It will be scored from 0 to 85 points.
-        \item Grading criteria:
-    \begin{description}
-        \item [5\phantom{+} --] => 140 points
-        \item [4+ --] 132 - 139 points
-        \item [4\phantom{+} --] 117 - 131 points
-        \item [3+ --] 109 - 116 points
-        \item [3\phantom{+} --] 93 - 108 points
-        \item [2\phantom{+} --] =< 92 points
-    \end{description}
-\end{itemize}
+        \item Active Participation in the in-class activities
+        \item Presentation of the scientific paper in pairs
+    \end{itemize}
 \end{frame}
 \begin{frame}
     \frametitle{Attendance}
     \only<1>{
         \begin{itemize}
-            \item Attendance is advised
             \item You are allowed to miss up to \alert{2 classes in case of a formal
             excuse}
             \item Additionally, you are allowed to miss up to \alert{2 classes in the case of a formal excuse}
-            \item An absence does not exempt from doing homework assignments
         \end{itemize}
     }
     \only<2>{
         \begin{center}
-            \includegraphics[width = .9\textwidth]{png/pretty_please.jpg}
+            \includegraphics[width = .7\textwidth]{png/pretty_please.jpg}
         \end{center}
     }
 \end{frame}
 
+\section{Objectives}
+
 \begin{frame}
-    \frametitle{Additional Resources}
-    \only<1>{
-        \begin{center}
-            \includegraphics<1>[width = .5\textwidth]{copy_paste.png}
-        \end{center}
-    }
+    \frametitle{Objective of the course}
+    \begin{itemize}
+        \item<1> present basic concepts and methods of computational social science
+        \item<1> present the advantages, challenges, and limitations of computational methods in social science
+        \item<1> teach you how to use some of the discussed methods in practice (sentiment analysis, API)
+        
+    \end{itemize}
     \only<2>{
-        \begin{center}
-            \includegraphics<2>[width = .6\textwidth]{stack_overflow.png}
-        \end{center}
-    }
-    \only<3>{
-        \begin{itemize}
-            \item \textcolor{blue}{\href{https://stackoverflow.com}{www.stackoverflow.com}}
-            \item \textcolor{blue}{\href{https://www.learnpython.org}{www.learnpython.org}}
-            \item \textcolor{blue}{\href{https://www.edx.org/course/introduction-to-computer-science-and-programming-7?index=product&queryID=51a933646c74acd8353b1d8c34fa59d6&position=2}{Introduction to Computer Science and Programming Using Python}}
-            \item Introduction to Computation and Programming Using Python by John V. Guttag
-        \end{itemize}
-    }
-    \only<4>{
-        \begin{center}
-            \includegraphics<4>[width=\textwidth]{chatgpt_stackoverflow.png}
-        \end{center}
-    }
-    \only<5>{
-        \begin{center}
-            \includegraphics<5>[width=\textwidth]{chatgpt5.png}
-        \end{center}
-    }
-    \only<6>{
-        \begin{center}
-            \includegraphics<6>[width=.5\textwidth]{chatgpt_meme.jpg}
-        \end{center}
-    }
-    \only<7>{
-        \begin{center}
-            \includegraphics<7>[width=.9\textwidth]{chatgpt_meme2.jpg}
-        \end{center}
-    }
-    \only<8>{
-        \begin{center}
-            \includegraphics<8>[width=.9\textwidth]{chatgpt_meme3.jpg}
-        \end{center}
+        \begin{tikzpicture}[overlay]
+            \node[anchor = base, text=red, text width = 13cm, align = center] at ([xshift=-1cm,yshift=-3cm]current page.center){\LARGE This is not a Computer Science Class!};
+        \end{tikzpicture}
     }
 \end{frame}
 
@@ -214,34 +167,33 @@
 
 \end{frame}
 
-\section{Python}
-
 \begin{frame}
-    \only<+>{
-        \centering
-        \includegraphics[width = \framewidth]{png/python_logo.png}
-    }
-    \only<2,3>{
-        \frametitle{What is Python?}
-        \only<2>{
-            \begin{definition}
-                \emph{Pythons} are a family of nonvenomous snakes found in Africa, Asia, and Australia. Among its members are some of the largest snakes in the world. Ten genera and 42 species are currently recognized.
-            \end{definition}
+    \frametitle{Traditional Research Methods}
+        \only<+>{
+            \begin{itemize}
+                \item surveys
+                \item observational studies
+                \item experiments
+                \item case studies
+                \item event sampling methodology (diaries)
+                \item interviews
+                \item meta-analysis
+            \end{itemize}}
+        \only<+>{
+            \resizebox{\textwidth}{!}{
+                \begin{tabular}{l | c | c | c | c | c | c }
+                Id & Sex & Age & Condition & Variable A & Variable B & Variable C\\
+                \hline \hline
+                AAA & M & 24 & exp & 55:53 & 3 & apple\\
+                AAB & F & 22 & exp & 53:47 & 2 & banana\\
+                AAC & F & 28 & con & n/a   & 4 & banana\\
+                AAD & M & 21 & con & 54:35 & 3 & banana
+                \end{tabular}}
         }
-        \only<3>{
-            \begin{definition}
-                \emph{Python} is a programming language and the Python interpreter is a piece of software that reads the source code and performs its instructions. There are two generations of Python: Python 2.x and Python 3.x. \alert{We will use Python 3.x only.}
-            \end{definition}
-        }
-    }
-    \only<4>{
-        \frametitle{Python}
-        \includegraphics[width = \framewidth]{png/python_idle.png}
-    }
 \end{frame}
 
 \begin{frame}
-    \frametitle{How Social Scientists can use Python?}
+    \frametitle{Computational methods}
     \only<1,3,5,7,9,11>{
         \begin{itemize}
             \item<1> extraction of unstructured data from external digital (i.e. web-based) sources
@@ -253,7 +205,7 @@
         \end{itemize}
     }
     \only<2>{
-        \includegraphics[width = \textwidth]{png/melody.png}
+        \includegraphics[width = \textwidth]{png/carolina.png}
     }
     \only<4>{
         \includegraphics[width = \textwidth]{png/nlp.png}
@@ -268,88 +220,54 @@
         \includegraphics[width = \textwidth]{png/networks.png}
     }
     \only<12>{
-        \includegraphics[width = \textwidth]{png/simulations.png}
-    }
-
-\end{frame}
-
-\section{Objectives}
-
-\begin{frame}
-    \frametitle{Objective of the course}
-    \begin{itemize}
-        \item<1> present basic programming concepts in Python
-        \item<1> teach you how to solve basic computing problems with the use of Python
-        \item<1> teach you the importance of writing readable and reproducible code
-        \item<1> present basic concepts of computational social science
-        \item<1> present the advantages, challenges, and limitations of computational methods in social sciences
-        \item<1> teach you how to plan research using computational methods (especially webscraping, web API data extraction, and natural language processing)
-        
-    \end{itemize}
-    \only<2>{
-        \begin{tikzpicture}[overlay]
-            \node[anchor = base, text=red, text width = 13cm, align = center] at ([xshift=-1cm,yshift=-1cm]current page.center){\LARGE You will not be a Computer Scientist\\ after the course!};
-        \end{tikzpicture}
-    }
-\end{frame}
-
-\section{Tools}
-
-\begin{frame}
-    \only<+>{
-        \frametitle{Tools of the trade}
         \centering
-        \includegraphics[width = .6\framewidth]{png/jupyter.png}
+        \includegraphics[width = .6\textwidth]{png/simulations.png}
+    }
+
+\end{frame}
+
+\section[Data]{Data}
+
+\subsection[Data Sources]{Data Sources}
+\begin{frame}
+    \setbeamercovered{transparent}
+    \frametitle{Data Sources}
+    \only<+>{
+        \begin{figure}
+            \includegraphics[scale=.35]{png/data_everywhere.png}
+        \end{figure}}
+    \only<+>{
+        \begin{figure}
+            \includegraphics[width = .9\textwidth]{png/mierzenie.png}
+        \end{figure}
     }
     \only<+>{
-        \frametitle{What is Jupyter Notebook?}
-        \begin{definition}
-            \emph{Jupyter Notebooks} are documents produced by the Jupyter Notebook App which contain both computer code (e.g. python) and rich text elements (paragraph, equations, figures, links, etc.). Notebook documents are both human-readable documents containing the analysis description and the results (figures, tables, etc.) as well as executable documents that can be run to perform data analysis.
-        \end{definition}
+        \begin{figure}
+            \includegraphics[scale = .5]{png/tracker.jpg}
+        \end{figure}
     }
     \only<+>{
-        \frametitle{Jupyter Notebook}
-        \includegraphics[width = \framewidth]{png/jupyter_notebook.png}
-    }
-    \only<+>{
-        \frametitle{What is Jupyter Notebook App?}
-        \begin{definition}
-            \emph{The Jupyter Notebook App} is an application that allows editing and running code via a web browser. The app can be run on a local desktop requiring no internet access or can be installed on a remote server and accessed through the internet.
-        \end{definition}
+        \begin{itemize}
+            \item<4> webpages
+            \item<4> social media
+            \item<4> smart devices
+            \item<4> digital behavioral data
+            \item<4> mobile phone networks
+            \item<4> goverment data
+            \item <4>...
+        \end{itemize}
+        \action<4>{\alert{The fact that you can get the data does not mean you should.}}
     }
 \end{frame}
 
-\begin{frame}[fragile]
-    \only<+>{
-        \begin{center}
-            \includegraphics[scale = .7]{png/colab.png}
-        \end{center}
-    }
-    \only<+>{
-        \frametitle{What is Colaboratory?}
-        \begin{definition}
-            \emph{Colaboratory} is a free Jupyter Notebook environment that requires no setup and runs entirely in the cloud. In other words, it is almost the same as Jupyter Notebook App but it runs in Google Cloud, so if you have a google account you have access to Colaboratory.
-        \end{definition}
-    }
-    \only<+>{
-        \frametitle{Colaboratory}
-        \includegraphics[width = \framewidth]{png/colaboratory.png}
-    }
-    \only<+>{
-        \frametitle{How to open Jupyter Notebook in Colaboratory?}
-        If you have a Google account and all of you have you just need to follow these four easy steps to open a notebook we prepared for today:
-        \begin{enumerate}
-            \item Visit \textcolor{blue}{\href{https://colab.research.google.com/notebooks/welcome.ipynb}{www.colab.research.google.com}}
-            \item Press File and choose Open notebook\dots
-            \item Choose GitHub and type \mintinline{bash}{MikoBie}
-            \item Select \mintinline{bash}{icss}
-            \item Click on \mintinline{bash}{notebooks/N1.ipynb}
-        \end{enumerate}
-    }
-    \only<+>{
-        \includegraphics[width = \framewidth]{png/colab_notebook.png}
-    }
-\end{frame}
 
+\begin{frame}
+    \frametitle{For the next week}
+    \begin{itemize}
+       \item \textcolor{blue}{\href{https://www.theguardian.com/us-news/2015/dec/11/senator-ted-cruz-president-campaign-facebook-user-data}{Ted Cruz using firm that harvested data on millions of unwitting Facebook users}}
+       \item Kosinski, M., Stillwell, D., \& Graepel, T. (2013). Private traits and attributes are predictable from digital records of human behavior. \textit{Proceedings of the National Academy of Sciences}, \textit{110(15)}, 5802–5805. \textcolor{blue}{\href{https://doi.org/10.1073/pnas.1218772110}{https://doi.org/10.1073/pnas.1218772110}}
+    \end{itemize}
+    
+\end{frame}
 
 \end{document}
