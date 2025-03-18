@@ -386,13 +386,229 @@
         \begin{figure}
             \begin{tikzpicture}[>=stealth, text-node/.style={
                 rectangle, draw=black, fill=gray!20, text centered, rounded corners}]
-                \node[text-node, text width = 3cm] at (0,0) {Fear of failure leads to failure.};
-                \node[text-node, text width = 3cm] at (3,4) {If we do not face our fears, our fears will chase us forever.};
-                \node[text-node, text width = 3cm] at (4,1.5) {Be brave. Take risks. Nothing can substitute experience.};
-                \node[text-node, text width = 3cm] at (9,4) {We do not need to explain our love. We only need to show it.};
-                \node[text-node, text width = 3cm] at (8,0) {Love yourself first because this is the person you are going to spend the rest of your life with.};
+                \node[text-node, text width = 3cm] (T1) at (0,0) {Fear of failure leads to failure.};
+                \node[text-node, text width = 3cm] (T2) at (3,4) {If we do not face our fears, our fears will chase us forever.};
+                \node[text-node, text width = 3cm] (T3) at (4,1.5) {Do not fear to love for the first time.};
+                \node[text-node, text width = 3cm] (T4) at (9,4) {We do not need to explain our love. We only need to show it.};
+                \node[text-node, text width = 3cm] (T5) at (8,0) {Love yourself first because this is the person you are going to spend the rest of your life with.};
+                \node at (-2.25, 0) {T1 = };
+                \node at (.75, 4) {T2 = };
+                \node at (1.75,1.5) {T3 = };
+                \node at (6.75,4) {T4 = };
+                \node at (5.75,0) {T5 = };
             \end{tikzpicture}
         \end{figure}
+    }
+    \only<+>{
+        \begin{enumerate}
+            \item Corpus preprocessing: Tokenization $=>$ Lemmatization $=>$ Stop
+            words removal.
+            \item Vectorization of the text (text embeddings).
+            \item Training a model.
+            \item Testing the model.
+        \end{enumerate}
+    }
+    \only<+>{
+        \framesubtitle{What is a vector?}
+        \begin{definition}{}
+            In mathematics and physics, \emph{vector} is a term that refers to
+            quantities that cannot be expressed by a single number (a scalar),
+            or to elements of some vector spaces.
+        \end{definition}
+    }
+    \only<5,6>{
+        \framesubtitle{What is a vector?}
+        \begin{figure}
+            \begin{tikzpicture}
+                \draw[->, thick] (0, 0) --++ (0: 6cm) node [below] {x};
+                \draw[->, thick] (0, 0) --++ (90: 6cm) node [left] {y};
+                \draw node at (4cm,3cm) {\LARGE.};
+                \draw<5> node at (4,3) [right] {A};
+                \foreach \x in {1,...,5}{
+                    \draw (\x, -.05) node [below] {\x} -- (\x, .05);
+                    \draw (-.05, \x) node [left] {\x} -- (.05, \x);
+                }
+                \draw<6> node at (4,3) [right]{A(4,3)};
+                \draw<6> [dashed, thin, gray] (4,0) -- (4,3);
+                \draw<6> [dashed, thin, gray] (0,3) -- (4,3);
+                \draw<6> node at (4,3) [right]{A(4,3)};
+            \end{tikzpicture}
+    \end{figure}
+    }
+    \only<7>{
+        \framesubtitle{Bag of words}
+        \begin{figure}
+            \begin{tikzpicture}[>=stealth, text-node/.style={
+                rectangle, draw=black, fill=gray!20, text centered, rounded corners}]
+                \node[text-node, text width = 3cm] (T1) at (0,0) {fear \phantom{of} failure lead \phantom{to} failure};
+                \node[text-node, text width = 3cm] (T2) at (3,4) {\phantom{If} \phantom{we} do not face \phantom{our} fear \phantom{our} fear be chase \phantom{us} forever};
+                \node[text-node, text width = 3cm] (T3) at (4,1.5) {do not fear \phantom{to} love \phantom{for} \phantom{the} first time};
+                \node[text-node, text width = 3cm] (T4) at (9,4) {\phantom{We} do not need \phantom{to} explain \phantom{our} love \phantom{We} only need \phantom{to} show \phantom{it}};
+                \node[text-node, text width = 3cm] (T5) at (8,0) {love \phantom{yourself} first \phantom{because} \phantom{this} be \phantom{the} person \phantom{you} be go \phantom{to} spend \phantom{the} rest \phantom{of} \phantom{your} life \phantom{with}};
+                \node at (-2.25, 0) {T1 = };
+                \node at (.75, 4) {T2 = };
+                \node at (1.75,1.5) {T3 = };
+                \node at (6.75,4) {T4 = };
+                \node at (5.75,0) {T5 = };
+            \end{tikzpicture}
+        \end{figure}
+    }
+    \only<8>{
+        \framesubtitle{Bag of words}
+        \begin{figure}
+            \begin{tikzpicture}[>=stealth, text-node/.style={
+                rectangle, draw=black, fill=gray!20, text centered, rounded corners}]
+                \node[text-node, text width = 3cm] (T1) at (0,0) {\colorbox{yellow}{fear} \phantom{of} failure lead \phantom{to} failure};
+                \node[text-node, text width = 3cm] (T2) at (3,4) {\phantom{If} \phantom{we} do not face \phantom{our} \colorbox{yellow}{fear} \phantom{our} \colorbox{yellow}{fear} be chase \phantom{us} forever};
+                \node[text-node, text width = 3cm] (T3) at (4,1.5) {do not \colorbox{yellow}{fear} \phantom{to} \colorbox{blue}{love} \phantom{for} \phantom{the} first time};
+                \node[text-node, text width = 3cm] (T4) at (9,4) {\phantom{We} do not need \phantom{to} explain \phantom{our} \colorbox{blue}{love} \phantom{We} only need \phantom{to} show \phantom{it}};
+                \node[text-node, text width = 3cm] (T5) at (8,0) {\colorbox{blue}{love} \phantom{yourself} first \phantom{because} \phantom{this} be \phantom{the} person \phantom{you} be go \phantom{to} spend \phantom{the} rest \phantom{of} \phantom{your} life \phantom{with}};
+                \node at (-2.25, 0) {T1 = };
+                \node at (.75, 4) {T2 = };
+                \node at (1.75,1.5) {T3 = };
+                \node at (6.75,4) {T4 = };
+                \node at (5.75,0) {T5 = };
+            \end{tikzpicture}
+        \end{figure}
+    }
+    \only<9>{
+        \framesubtitle{How to convert text into a vector?}
+        \begin{figure}
+            \begin{tikzpicture}
+                \draw[->, thick] (0, 0) --++ (0: 6cm) node [below] {fear};
+                \draw[->, thick] (0, 0) --++ (90: 6cm) node [left] {love};
+                \foreach \x in {1,...,5}{
+                    \draw (\x, -.05) node [below] {\x} -- (\x, .05);
+                    \draw (-.05, \x) node [left] {\x} -- (.05, \x);
+                }
+                \node at (1,0) {\LARGE .};
+                \node at (1,0) [above] {\textcolor{yellow}{T1}};
+                \node at (2,0) {\LARGE .};
+                \node at (2,0) [above] {\textcolor{yellow}{T2}};
+                \node at (0,1) {\LARGE .};
+                \node at (0,1) [above right] {\textcolor{blue}{T4}};
+                \node at (0,1) [below right] {\textcolor{blue}{T5}};
+                \node at (1,1) {\LARGE .};
+                \node at (1,1) [above right] {\textcolor{green}{T3}};
+            \end{tikzpicture}
+    \end{figure}
+    }
+    \only<10>{
+        \framesubtitle{Cosine similarity}
+        \begin{figure}
+            \begin{tikzpicture}
+                \draw[->, thick] (0, 0) --++ (0: 6cm) node [below] {x};
+                \draw[->, thick] (0, 0) --++ (90: 6cm) node [left] {y};
+                \foreach \x in {1,...,5}{
+                    \draw (\x, -.05) node [below] {\x} -- (\x, .05);
+                    \draw (-.05, \x) node [left] {\x} -- (.05, \x);
+                }
+                \draw (0,0) --++ (30:4) node [above] {$T_n(x_{n}, y_{n})$};
+                \draw (0,0) --++ (75:5) node [above] {$T_{n+1}(x_{n+1}, y_{n+1})$};
+                \draw (0,0) --++ (30:4) node {\LARGE .};
+                \draw (0,0) --++ (75:5) node {\LARGE .};
+                \draw (0,0) ++(30:1) arc (30:75:1) node [xshift = .2cm, yshift = -.4cm] {$\alpha$};
+
+            \end{tikzpicture}
+        \end{figure}
+    }
+    \only<11>{
+        \framesubtitle{Cosine similarity}
+        \begin{figure}
+            \begin{tikzpicture}[help lines/.style={black!50,very thin}]
+                \foreach \x in {-360,-270,-180,-90,+90,+180,+270,+360} \draw ({\x/90},-0.05) -- ({\x/90},0.05) node[below] {$\x^\circ$};
+                \foreach \y in {-1,1} \draw (-0.05,\y) -- (0.05, \y) node [left] {$\y$};
+                \draw[<->,thick] (-5,0)--(5,0) node[right] {$x$};
+                \draw[<->,thick] (0,-2.25)--(0,2.25) node[above] {$y$};
+                \draw[very thick,color=black] plot [domain={-360/90}:{360/90},smooth] (\x,{cos(90*\x)});
+            \end{tikzpicture}
+        \end{figure}
+    }
+    \only<12>{
+        \framesubtitle{Cosine similarity}
+        \begin{definition}{}
+            In data analysis, \emph{cosine similarity} is a measure of similarity
+            between two non-zero vectors defined in an inner product space.
+            Cosine similarity is the cosine of the angle between the vectors;
+            that is, it is the dot product of the vectors divided by the product
+            of their lengths. It follows that the cosine similarity does not
+            depend on the magnitudes of the vectors, but only on their angle.
+            The cosine similarity always belongs to the interval [−1,1].  For
+            example, two proportional vectors have a cosine similarity of 1, two
+            orthogonal vectors have a similarity of 0, and two opposite vectors
+            have a similarity of -1. 
+       \end{definition}
+    }
+    \only<13>{
+        \begin{figure}
+            \begin{tikzpicture}
+                \draw[->, thick] (0, 0) --++ (0: 6cm) node [below] {x};
+                \draw[->, thick] (0, 0) --++ (90: 6cm) node [left] {y};
+                \foreach \x in {1,...,5}{
+                    \draw (\x, -.05) node [below] {\x} -- (\x, .05);
+                    \draw (-.05, \x) node [left] {\x} -- (.05, \x);
+                }
+                \draw (0,0) ++ (30:4) node {\textcolor{blue}{\tiny o}};
+                \draw (0,0) ++ (32:4) node {\textcolor{blue}{\tiny o}};
+                \draw (0,0) ++ (28:3.9) node {\textcolor{blue}{\tiny o}};
+                \draw (0,0) ++ (30:3.5) node {\textcolor{blue}{\tiny o}};
+                \draw (0,0) ++ (35:4) node {\textcolor{blue}{\tiny o}};
+                \draw (0,0) ++ (28:3.8) node {\textcolor{blue}{\tiny o}};
+                \draw (0,0) ++ (30:3.9) node {\textcolor{blue}{\tiny o}};
+                \draw (0,0) ++ (34:3.8) node {\textcolor{blue}{\tiny o}};
+                \draw (0,0) ++ (32:3.9) node {\textcolor{blue}{\tiny o}};
+                \draw (0,0) ++ (327:3.5) node {\textcolor{blue}{\tiny o}};
+                \draw (0,0) ++ (35:4.2) node {\textcolor{blue}{\tiny o}};
+                \draw (0,0) ++ (32:3.8) node {\textcolor{blue}{\tiny o}};
+                \draw (0,0) ++ (75:5) node {\textcolor{yellow}{\tiny x}};
+                \draw (0,0) ++ (80:4.8) node {\textcolor{yellow}{\tiny x}};
+                \draw (0,0) ++ (76:4.9) node {\textcolor{yellow}{\tiny x}};
+                \draw (0,0) ++ (72:5.1) node {\textcolor{yellow}{\tiny x}};
+                \draw (0,0) ++ (76:5) node {\textcolor{yellow}{\tiny x}};
+                \draw (0,0) ++ (82:4.6) node {\textcolor{yellow}{\tiny x}};
+                \draw (0,0) ++ (76:5.2) node {\textcolor{yellow}{\tiny x}};
+                \draw (0,0) ++ (73:5.1) node {\textcolor{yellow}{\tiny x}};
+                \draw (0,0) ++ (45:1) node {\textcolor{green}{\tiny *}};
+                \draw (0,0) ++ (46:.9) node {\textcolor{green}{\tiny *}};
+                \draw (0,0) ++ (47:1.1) node {\textcolor{green}{\tiny *}};
+                \draw (0,0) ++ (45:1.2) node {\textcolor{green}{\tiny *}};
+                \draw (0,0) ++ (44:.9) node {\textcolor{green}{\tiny *}};
+                \draw (0,0) ++ (42:.8) node {\textcolor{green}{\tiny *}};
+                \draw (0,0) ++ (48:1.1) node {\textcolor{green}{\tiny *}};
+                \draw (0,0) ++ (47:1) node {\textcolor{green}{\tiny *}};
+
+            \end{tikzpicture}
+
+        \end{figure}
+    }
+    \only<14>{
+        \framesubtitle{Output}
+        \scriptsize
+        For example, imagine you have the following set of sentences (in real-world we would operate on documents that contain multiple sentences).
+
+        \begin{itemize}
+            \item I like to eat broccoli and bananas.
+            \item I ate a banana and spinach smoothie for breakfast.
+            \item Chinchillas and kittens are cute.
+            \item My sister adopted a kitten yesterday.
+            \item Look at this cute hamster munching on a piece of broccoli.
+        \end{itemize}
+
+        The LDA model returns more or less the following information about the probability to belong each sentence to a topic.
+        
+        \begin{itemize}
+            \item Sentences 1 and 2: 100\% Topic A
+            \item Sentences 3 and 4: 100\% Topic B
+            \item Sentence 5: 60\% Topic A, 40\% Topic B
+        \end{itemize}
+
+        And the most representative words for a topic.
+        
+        \begin{itemize}
+            \item Topic A: 30\% broccoli, 15\% bananas, 10\% breakfast, 10\% munching, etc. (at which point, you could interpret topic A to be about food)
+            \item Topic B: 20\% chinchillas, 20\% kittens, 20\% cute, 15\% hamster, etc. (at which point, you could interpret topic B to be about cute animals)
+        \end{itemize}
+
     }
 \end{frame}
 
@@ -400,9 +616,10 @@
 \begin{frame}
     \frametitle{For the class in two weeks}
     \begin{itemize}
-        \item  Milgram, S. (1967). The small-world problem. Psychology Today, 1(1), 61–67.
-        \item  Lazer, D., Pentland, A. (Sandy), Adamic, L., Aral, S., Barabasi, A. L., Brewer, D., Christakis, N., Contractor, N., Fowler, J., Gutmann, M., Jebara, T., King, G., Macy, M., Roy, D., \& Van Alstyne, M. (2009). Life in the network: The coming age of computational social science. Science, 323(5915), 721–723. \href{https://doi.org/10.1126/science.1167742}{\textcolor{blue}{https://doi.org/10.1126/science.1167742}}.
-
+        \item Biesaga, M., Domaradzka, A., Roszczyńska-Kurasińska, M., Talaga,
+        S., \& Nowak, A. (2023). The effect of the pandemic on European
+        narratives on smart cities and surveillance. Urban Studies,
+        004209802211383. \href{https://doi.org/10.1177/00420980221138317}{\textcolor{blue}{https://doi.org/10.1177/00420980221138317}}.
     \end{itemize}
 \end{frame}
 \end{document}
