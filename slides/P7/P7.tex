@@ -12,6 +12,7 @@
 \usepackage{csquotes}
 \usepackage{csquotes}
 \usepackage{minted}
+\usepackage{animate}
 \captionsetup{labelformat=empty,labelsep=none}
 
 \graphicspath{ {./png/} }
@@ -84,7 +85,7 @@
 \subtitle{Computer simulation -- why simulate?}
 \author[]{Mikołaj Biesaga\\ \small{\color{blue}{\href{mailto:m.biesaga@uw.edu.pl}{m.biesaga@uw.edu.pl}}}}
 \institute{\includegraphics[width = 4 cm]{uw.png}}
-\date{April 8, 2025}
+\date{April 15, 2025}
 \begin{document}
 \begin{frame}
    \titlepage
@@ -106,7 +107,7 @@
    }
    \only<3,4>{
       \begin{itemize}
-         \item What is a model? \href{https://youtu.be/RK9m4OmFAbY?feature=shared}{\textcolor{blue}{YouTueb video}}
+         \item What is a model? \href{https://youtu.be/RK9m4OmFAbY?feature=shared}{\textcolor{blue}{YouTube video}}
          \item<4> Formalizing a theory into a model allows the researcher to
          describe their ideas in a precise, unambiguous way (Goldstone \& Janssen 2005; Epstein 2008). 
          \item<4> Models are conceptually precise, their assumptions are clear;
@@ -136,28 +137,8 @@
          \draw [thick, ->] (5.8,0) -- (6.7,0);
       \end{tikzpicture}
    }
-
-\end{frame}
-
-\begin{frame}
-   \frametitle{Why simulate?}
-   \framesubtitle{Nowak, Rychwalska, \& Borkowski, 2015}
-   \begin{enumerate}
-      \item What is a mental model?
-         \begin{itemize}
-            \item "Mental models are the mind's replicas of phenomena, upon
-            which humans manipulate to learn the mechanism and workings of the
-            surrounding environment." (Ibidem, p.~2)
-            \item Mental models develop most accurately through interaction with
-            the target system (Norman, 1983).
-         \end{itemize}
-      \item What are the benefits of simulating for scientists?
-   \end{enumerate}
-\end{frame}
-
-\begin{frame}
-   \frametitle{What are computer simulations?}
-   \only<1>{
+   \only<6>{
+      \framesubtitle{What are computer simulations?}
       \begin{block}{Computer Simulation}
          Computer simulation is the running of a model on a computer, the model
          being designed to represent the behaviour of, or the outcome of, a
@@ -166,28 +147,91 @@
          they aim to predict/explain.
       \end{block}
    }
-   \only<2>{
-      \framesubtitle{How are they useful?}
 
+\end{frame}
+
+\begin{frame}
+   \frametitle{Why simulate?}
+   \framesubtitle{Nowak, Rychwalska, \& Borkowski, 2015}
+   \begin{enumerate}
+      \item What is a mental model?
+      \only<2>{
+         \begin{itemize}
+            \item "Mental models are the mind's replicas of phenomena, upon
+            which humans manipulate to learn the mechanism and workings of the
+            surrounding environment." (Ibidem, p.~2)
+            \item Mental models develop most accurately through interaction with
+            the target system (Norman, 1983).
+         \end{itemize}
+      }
+      \item What are the benefits of simulating for scientists?
+   \end{enumerate}
+\end{frame}
+
+\begin{frame}
+   \frametitle{Agent-based models}
+   \only<1>{
+      \begin{figure}
+         \centering
+         \includegraphics[width = .6\textwidth]{agent_based_models.png}
+         \caption{Galan et al., 2013}
+      \end{figure}
+   }
+   \only<2>{
+      \begin{block}{Agent-based models}
+         Agent-based models are discrete-time computer simulations used to study
+         the interactions between people, things, places, and time. They are
+         stochastic models built from the bottom up meaning individual agents
+         (often people in epidemiology) are assigned certain attributes.
+         \alert{The agents are programmed to behave and interact with other
+         agents and the environment in certain ways.} These interactions produce
+         emergent effects that may differ from effects of individual agents.
+      \end{block}
    }
    \only<3>{
-      \framesubtitle{Agent-based models}
-      \begin{itemize}
-         \item 
-
-      \end{itemize}
-
+      \frametitle{Cellular automata}
+      \begin{figure}
+         \centering
+         \includegraphics[width = .9\textwidth]{grid.png}
+      \end{figure}
    }
    \only<4>{
-      \framesubtitle{Monte-Carlo Simulations}
+      \frametitle{Cellular automata}
+      \framesubtitle{Game of life (Conway, 1970)}
+      \begin{figure}
+         \includegraphics[width = .9\textwidth]{life.png}
+      \end{figure}
 
    }
+   \only<5>{
+      \frametitle{Cellular automata}
+      \framesubtitle{Game of life (Conway, 1970)}
+      \begin{figure}
+         \animategraphics[loop,controls, width = .9\textwidth]{10}{game_life-}{0}{148}
+         \caption{from \href{https://playgameoflife.com}{\textcolor{blue}{https://playgameoflife.com}}}
+      \end{figure}
 
+   }
 \end{frame}
 
 \begin{frame}
    \frametitle{Dynamic models of segregation}
    \framesubtitle{Schelling, 1971}
+   \only<1>{
+      \begin{itemize}
+      \item In 1965, the last of \href{https://en.wikipedia.org/wiki/Jim_Crow_laws}{\textcolor{blue}{Jim Crow's}} racial segregation laws were overturned.
+      \item Despite much effort and investment, segregation still remains a major issue in the U.S. and elsewhere to this date (Cassidy, 2016).
+      \item "If an individual is surrounded by more individuals of different type than the number of individuals of own type, then the individual moves from the current location to a random empty location." (Schelling, 1971)
+   \end{itemize}
+   }
+   \only<2,3>{
+      \begin{figure}
+      \centering
+      \includegraphics<2,3>[width = \textwidth]{schelling1.png}
+      \includegraphics<3>[width = \textwidth]{schelling2.png}
+      \caption{Schelling, 1971}
+      \end{figure}
+   }
 
 \end{frame}
 
@@ -201,9 +245,79 @@
 \end{frame}
 
 \begin{frame}
-   \frametitle{Modeling Dynamics of Multicultural Integration and Conflict}
+   \frametitle{\large Modeling Dynamics of Multicultural Integration and Conflict}
    \framesubtitle{de Raad, Nowak, \& Borkowski, 2013}
+   \only<1,2>{
+      \only<1>{
+         \begin{itemize}
+            \item Acculturation vs Segregation.
+            \item A positive attitude means that contact with that person increases happiness, a negative attitude is related to a decrease.
+            \item Although happiness increases with the number of positively valued contacts, this increase is not linear.
+            \item Individuals, or agents, were assigned to a group, and given an attitude towards the own and other group ranging from $-1$ to $+1$.
+            \item A decision to move would be made if a spot would provide a higher level of happiness than the current location.
+         \end{itemize}
+      }
+      \only<2>{
+         $$H = A_{own} \times \sqrt{N_{own}} + A_{other} \times \sqrt{N_{other}}$$
+      }
+   }
+   \only<3>{
+      \begin{figure}
+         \begin{minipage}{.49\textwidth}
+            \includegraphics[width = \textwidth]{wouter1.png}
+         \end{minipage}
+         \begin{minipage}{.49\textwidth}
+            \includegraphics[width = \textwidth]{wouter2.png}
+         \end{minipage}
+         \caption{\footnotesize\textbf{Left panel:} Initial state of a
+         simulation in which agents of two groups – depicted in two shades of
+         gray are randomly distributed on a grid.  Black color indicates empty
+         spaces to which agents can potentially move. \textbf{Right panel:}
+         Pattern of intergroup contact between agents with mutual negative
+         attitudes.}
+      \end{figure}
+   }
+   \only<4>{
+      \begin{figure}
+         \includegraphics[width = \textwidth]{wouter3.png}
+         \caption{Pattern of intergroup contact between agents with equal and
+         mutually positive attitudes towards each other. In the picture on the
+         left mutual attitudes are 1.00; in the right picture the mutual
+         attitudes are 0.50.}
+      \end{figure}
+   }
+   \only<5>{
+      \begin{figure}
+         \includegraphics[width = \textwidth]{wouter4.png}
+         \caption{\textbf{Left panel:} A pattern of intergroup contact between
+         mutually tolerant agents; attitude towards the other group is 0.00.
+         \textbf{Right panel:} the lighter shaded group has a moderately
+         positive attitude of 0.50, the dark shaded group has a neutral attitude
+         of 0.00.}
+      \end{figure}
+   }
 
+\end{frame}
+\begin{frame}
+   \frametitle{Bibliography}
+   \scriptsize
+   \begin{enumerate}
+      \item Conway, J. (1970). Conway's game of life. Scientific American.
+      \item Galán, J. M., Izquierdo, L. R., Izquierdo, S. S., Santos, J. I., Del
+      Olmo, R., \& López-Paredes, A. (2013). Checking Simulations: Detecting and
+      Avoiding Errors and Artefacts. In B. Edmonds \& R. Meyer (Eds.),
+      Simulating Social Complexity (pp. 95–116). Springer Berlin Heidelberg.
+      \item De Raad, W. E., Nowak, A., \& Borkowski, W. (2013). Modeling
+      Dynamics of Multicultural Integration and Conflict. In K. Sycara, M.
+      Gelfand, \& A. Abbe (Eds.), Models for Intercultural Collaboration and
+      Negotiation (Vol. 6, pp. 183–197). Springer Netherlands.
+      \item Epstein, J. M. (2008) "Why Model?" Journal of Artificial Societies and Social Simulation, 11(4), 12.
+      \item Goldstone, R. L., \& Janssen, M. A. (2005). Computational models of collective behavior. Trends in Cognitive Sciences, 9(9), 424-430.
+      \item Norman, D. A. (1983). Some observations on mental models. In D. Gentner \& A. L. Stevens (Eds), Mental models, pp . 7-14. Hillsdale, NJ: Erlbaum.
+      \item Schelling, T. C. (1971). DYNAMIC MODELS OF SEGREGATION. Journal of
+      Mathematical Psychology, 1, 143–186.
+      \item Timpone, R. J., \& Taber, C. S. (1996). Computational Modeling. London: SAGE.
+   \end{enumerate}
 \end{frame}
 
 \end{document}
