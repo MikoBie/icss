@@ -164,41 +164,61 @@
 
 \begin{frame}
    \frametitle{Societal response to Ukrainian refugee migration}
-   \framesubtitle{Weisser, 2022}
-   \begin{itemize}
-      \item Eight weeks after the first shot was fired, the overall number of
-      Ukrainians seeking protection abroad stood at 5.1 million (UNHCR, 2022a).
-      \item Will non-government societal stakeholders, such as business or civil
-      society representatives, maintain their levels of support for a prolonged
-      period or can we expect levels of cooperation to fade quickly?
-      \item Who becomes more likely to provide aid or express the intent to
-      cooperate in the short run? Who disapproves or threatens?
-      \item Whilst the influx of (large) refugee populations is typically
-      associated with positive impulses for the local economy, attitudes towards
-      refugees and political preferences of native residents edge towards a more
-      hostile position. 
-      \item Irrespective of the absence of adverse economic implications, public attitudes towards refugees can be volatile.
-      Residents living near transit routes across the Balkan between 2010 and 2016 were much more sceptical about
-      immigrants and their contribution to society (Ajzenman et al., 2022). Moreover, institutional trust and perceived
-      political stability declined along these transit corridors. When it comes to supporting asylum seekers, European citi-
-      zens display a distinct preference for those more likely to be easily integrated into labour markets or society, and
-      those who are deemed more vulnerable (Bansak et al., 2016). Anti-refugee or anti-immigrant attitudes were found to
-      be more prevalent amongst Europeans who are living in relative economic deprivation and who have fewer contact
-      experiences with migrant groups (Albada et al., 2021). Similarly, prior contact in the form of friendships with minority
-      group members translates into more positive attitudes towards newly arrived refugees (Lippard \& McNamee, 2021).
-      \item Acceptance of individuals seeking protection due to war tends to be higher (Von Hermanni \& Neumann, 2019),
-      yet can be lower for refugees from Eastern Europe, especially when fiscal concerns are factored in.
-      \item Attitudes towards
-      14682435, 2023, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/imig.13071 by Pcp/University Of Warsaw, Wiley Online Library on [25/04/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-      refugees may also be shaped by news media consumption (De Coninck, 2020): Frequent consumers of public broad-
-      casters or quality newspapers are more likely to display positive attitudes towards refugees; the reverse applies to
-      regular viewers of commercial broadcast networks. Frequent media coverage of migration issues may also increase
-      immigration worries (Benesch et al., 2019).
-      \item Overall, societal attitudes towards refugees depend strongly on the economic and institutional setting. Concom-
-      itantly, changing attitudes have the potential to shape the politico-economic environment in host countries. This, in
-      turn, implies that a timely evaluation of response dynamics is crucial to managing refugee migration and integration
-      successfully.
-   \end{itemize}
+   \only<1>{
+      \framesubtitle{Weisser, 2022}
+      \begin{itemize}
+         \item Eight weeks after the first shot was fired, the overall number of
+         Ukrainians seeking protection abroad stood at \alert{5.1 million}
+         (UNHCR, 2022).
+         \item Whilst the \alert{influx of (large) refugee populations is typically
+         associated with positive impulses for the local economy}, attitudes towards
+         refugees and political preferences of native residents edge towards a more
+         hostile position. 
+         \item Attitudes towards refugees may also be shaped by news media
+         consumption (De Coninck, 2020).
+         \item Overall, societal attitudes towards refugees depend strongly on the economic and institutional setting.
+         \item Concomitantly, changing attitudes have the potential to shape the
+         politico-economic environment in host countries.
+      \end{itemize}
+   }
+   \only<2>{
+      \framesubtitle{Research question}
+      \begin{block}{}
+         How did the description of the Ukrainina refugee changed as the effect of
+         the Russian invasion of Ukraine?
+      \end{block}
+   }
+   \only<3>{
+      \framesubtitle{Method}
+      \begin{itemize}
+         \item Data from the GDELT event database over \alert{16 weeks, starting with 30 December 2021}.
+         \item Within the sample of European primary actors with unambiguous
+         country affiliations, there are \alert{58,007 recorded events} with
+         refugees as secondary actors.
+         \item Each retrieved interaction event between a European primary actor
+         and refugees is classified according to one of the following four
+         modes:
+         \begin{enumerate}
+            \item Verbal cooperation;
+            \item Material cooperation;
+            \item Verbal conflict;
+            \item Material conflict. 
+         \end{enumerate} 
+      \end{itemize}
+   }
+   \only<4>{
+      \framesubtitle{Weisser, 2022}
+      \begin{figure}
+         \includegraphics[width = \textwidth]{weisser_1.png}
+      \end{figure}
+   }
+   \only<5>{
+      \begin{figure}
+         \framesubtitle{Weisser, 2022}
+         \includegraphics[width = \textwidth]{weisser_2.png}
+         \caption{Weisser, 2022}
+      \end{figure}
+   }
 
 \end{frame}
 
@@ -214,13 +234,49 @@
         \end{definition}
    }
    \only<+>{
-      \framesubtitle{GDELT API}
+      \framesubtitle{How to construct a request?}
+      \begin{itemize}
+         \item GDELT API Documentation is available at:
+         \begin{center}
+            \textcolor{blue}{\href{https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/}{https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/}}
+         \end{center}
+         \item The GDELT API lives under the following URL:
+         \begin{center}
+            \textcolor{blue}{\href{https://api.gdeltproject.org/api/v2/doc/doc?}{https://api.gdeltproject.org/api/v2/doc/doc?}}
+         \end{center}
+         \item The simplest request is constructed as follows:
+         \begin{center}
+            \textcolor{blue}{URL?}\textcolor{red}{query=ukraine}
+         \end{center}
+         \item You can add additional parameters to the request, such as:
+         \begin{center}
+            \textcolor{blue}{URL?query=ukraine}\textcolor{red}{\&mode=ArtGallery}
+         \end{center}
+      \end{itemize}
+   }
+   \only<+>{
+      \framesubtitle{How to construct a request?}
+      Construct a request using the GDELT API that will return:
       \begin{enumerate}
-         \item Read the documentation
-         \item Test the API in the web browser
-         \item Extract the data using BigQuery
-         \item Analyze the data
+         \item Tone Chart about migrants;
+         \item Tone Chart about refugees;
+         \item Tone Chart about migrants in Polish media;
+         \item Tone Chart about refugees in Polish media.
       \end{enumerate}
+   }
+   \only<+>{
+      \framesubtitle{How to construct a request?}
+      \begin{tikzpicture}
+          \node at (0,0) {\includegraphics[width = 7cm]{pl_gdelt_themes_lines.png}};
+          \node at (3.5,-3.75) {\includegraphics[width = 7cm]{esp_gdelt_themes_lines.png}};
+      \end{tikzpicture}
+   }
+   \only<+>{
+      \framesubtitle{How to construct a request?}
+      Human-firendly interface for testing the API is avaliable at:
+      \begin{center}
+         \textcolor{blue}{\href{https://gdelt.github.io}{https://gdelt.github.io}}
+      \end{center}
    }
 \end{frame}
 
