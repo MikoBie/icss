@@ -80,7 +80,7 @@
 \setbeamercovered{transparent} 
 
 \title[]{Introduction to Computational Social Science}
-\subtitle{Text as data -- does computer understand textual data?}
+\subtitle{Digital data sources and where to find them}
 \author[]{Mikołaj Biesaga\\ \small{\color{blue}{\href{mailto:m.biesaga@uw.edu.pl}{m.biesaga@uw.edu.pl}}}}
 \institute{\includegraphics[width = 4 cm]{uw.png}}
 \date{\today}
@@ -89,537 +89,287 @@
    \titlepage
 \end{frame}
 
-\section[Data]{Data, again}
+\section[Data]{Data}
 
+\subsection[Data Sources]{Data Sources}
 \begin{frame}
-    \frametitle{Structured and Unstructured Data}
+    \setbeamercovered{transparent}
+    \frametitle{Data Sources}
     \only<+>{
         \begin{figure}
-            \includegraphics[width = \textwidth]{structured.jpg}
+            \includegraphics[scale=.35]{png/data_everywhere.png}
+        \end{figure}}
+    \only<+>{
+        \begin{figure}
+            \includegraphics[scale = .5]{png/tracker.jpg}
         \end{figure}
     }
     \only<+>{
-        \centering
-        \begin{columns}[t]
-        \begin{column}{.5\textwidth}
-            Structured Data:
-            \begin{itemize}
-                \item can be displayed in rows and columns
-                \item numbers, text, dates
-                \item requires less storage
-                \item easy to manage and analysis
-            \end{itemize}
-        \end{column}
-        \begin{column}{.5\textwidth}
-            Unstructured Data:
-            \begin{itemize}
-                \item can't be displayed in rows and columns
-                \item images, audio, video, e-mails, spreadsheets, etc. (fun staff)
-                \item requires more storage
-                \item extremely hard to manage and analysis
-            \end{itemize}
-        \end{column}
-        \end{columns}
+        \begin{itemize}
+            \item<3> webpages
+            \item<3> social media
+            \item<3> smart devices
+            \item<3> digital behavioral data
+            \item<3> mobile phone networks
+            \item<3> goverment data
+            \item <3>...
+        \end{itemize}
+        \action<3>{\alert{The fact that you can get the data does not mean you should.}}
     }
 \end{frame}
 
+\section{Webscraping}
+
 \begin{frame}
-    \frametitle{Data Formats}
+    \frametitle{Webscraping}
     \only<+>{
-        Marianna is a 17 years old young lady. Although her main field of interest is physics (especially quantum physics and string theory), she also fancies sports. Her favorite physical activities are fishing and football.
-        Marian, on the other hand, is a naughty 15 years old boy who only loves literature, especially Szymborska poems touch his heart.
+        \begin{figure}
+            \includegraphics[scale = .5]{png/webscraping.jpg}
+        \end{figure}
     }
     \only<+>{
-        \textcolor{red}{Marianna} is a \textcolor{blue}{17} years old young lady. Although her main field of interest is \underline{physics} (especially \textbf{quantum physics} and \textbf{string theory}), she also fancies \underline{sport}. Her favorite physical activities are \textbf{fishing} and \textbf{football}.
-        \textcolor{red}{Marian}, on the other hand, is a naughty \textcolor{blue}{15} years old boy who only loves \underline{literature}, especially Szymborska \textbf{poems} touches his heart.
+        \begin{figure}
+            \includegraphics[scale = .22]{png/politico.png}
+            \caption{from \textcolor{blue}{\href{https://www.politico.eu/article/jacques-chirac-mourn-the-man-not-his-politics/}{POLITICO Europe}}}
+        \end{figure}
     }
-    \only<+>{
-        \resizebox{\textwidth}{!}{
-            \begin{tabular}{l | c | c | c | c | c | c | c | c }
-            Name & Sex & Age & Interest A & Interest A1 & Interest A2 & Interest B & Interest B1 & Interest B2\\
-            \hline \hline
-            Marianna & F & 17 & physics & quantum physics & string theory & sport & fishing & football\\
-            Marian & M & 15 & literature & poems & n/a & n/a & n/a & n/a \\
-            \end{tabular}}
-
-    }
-\end{frame}
-
-\begin{frame}[fragile]{JSON - JavaScript Object Notation}
-\begin{minted}[fontsize=\footnotesize]{js}
-{   "name": "Marianna",
-    "age": 17,
-    "interests": [
-        {
-            "name": "physics",
-            "field": [
-                "quantum physics",
-                "string theory"
-            ]
-        },
-        {
-            "name": "sport",
-            "field": [
-                "fishing",
-                "football"
-            ]
-        }
-]}
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]{JSON - JavaScript Object Notation}
-\begin{minted}[fontsize=\footnotesize]{js}
-{
-    "name": "Marian",
-    "age": 15,
-    "interests": [
-        {
-            "name": "literature",
-            "genre": [
-                "poems"
-            ]
-        }
-    ]
-}
-\end{minted}
-\end{frame}
-
-\begin{frame}
-    \frametitle{JSON - JavaScript Object Notation}
-    \begin{definition}
-        \emph{JavaScript Object Notation} is a lightweight text data format that is relatively easy to read for both the human naked eye and computers. Although it derives from JavaScript it is a language-independent data format. JSON is built on two structures: a collection of key-item pairs and an ordered list of values. JSON filenames use .json extension.
-    \end{definition}
-\begin{definition}
-    \emph{JSON Lines} (newline-delimited JSON) is a lightweight text data format that can be processed one record at a time. Each line consists of a JSON. JSON Lines filenames use .jl or .jsonl extensions.
-\end{definition}
-\end{frame}
-
-\section[Dating]{Ok, Cupid}
-
-\begin{frame}
-    \frametitle{What message to write on a dating app?}
-    \begin{figure}
-        \begin{minipage}{.3\textwidth}
-            \vspace{.65cm}
-            \includegraphics[width = \textwidth]{cupid_1.png}
-        \end{minipage}
-        \begin{minipage}{.3\textwidth}
-            \includegraphics[width = \textwidth]{cupid_2.png}
-        \end{minipage}
-        \begin{minipage}{.3\textwidth}
-            \includegraphics[width = \textwidth]{cupid_3.png}
-        \end{minipage}
-        \caption*{from \href{https://medium.com/p/2bf680806c72}{\textcolor{blue}{Medium.com}}}
-    \end{figure}
-
-\end{frame}
-
-\section[NLP]{Natural Language Processing}
-
-\begin{frame}
-    \frametitle{Natural Language Processing}
     \only<+>{
         \begin{definition}
-            In a general sense \emph{Natural Language Processing} (NLP) is an analytical approach that uses a set of (usually) computer-based methods to extract meaning, topics, or sentiment from natural language data (written or spoken). In other words, it is a set of computer algorithms that tries to synthesize human language.  \end{definition}
-    }
-\end{frame}
-\begin{frame}
-    \frametitle{Sentiment Analysis}
-    \only<+>{
-        \begin{figure}
-            \includegraphics[scale = .7]{png/nlp.jpg}
-        \end{figure}
-    }
-    \only<+>{
-        \framesubtitle{Dictionary-based approach}
-        \begin{figure}
-            \begin{tikzpicture}[>=stealth, text-node/.style={
-                rectangle, draw=black, fill=gray!20, text centered, rounded corners}]
-                \node[text-node, text width = 3cm] at (0,0) {This movie was so good -- I couldn't stop thinking about it afterward.};
-                \node[text-node, text width = 3cm] at (3,4) {The actors were great, but the story was boring and predictable.};
-                \node[text-node, text width = 3cm] at (4,2) {It looked amazing, but the characters didn't feel real.};
-                \node[text-node, text width = 3cm] at (9,4) {I loved the action scenes; they kept me hooked the whole time.};
-                \node[text-node, text width = 3cm] at (8,0) {It felt like the movie was trying too hard to be deep, but it just ended up confusing.};
-            \end{tikzpicture}
-        \end{figure}
-    }
-    \only<+>{
-        \framesubtitle{Preprocessing}
-        \begin{figure}
-            \begin{tikzpicture}[>=stealth, text-node/.style={
-                rectangle, draw=black, fill=gray!20, text centered, rounded corners, font=\small}]
-                \node[text-node, text width = 3cm] (text) at (0,0) {This move was so good -- I couldn't stop thinking about it afterward.};
-                \node [text-node, text width = 1.5cm] (token) at (4,0) {This\\ movie\\ was\\ so\\ good\\ --\\ I\\ couldn't\\ stop\\ thinking\\ about\\ it\\ afterward.};
-                \node [text-node, text width = 1.5cm] (lemma) at (7,0) {this\\ movie\\ be\\ so\\ good\\ --\\ i\\ cannot\\ stop\\ think\\ about\\ it\\ afterward};
-                \node [text-node, text width = 1.5cm] (stop) at (10,0) {\phantom{this}\\ movie\\ be\\ so\\ good\\ \phantom{--}\\ \phantom{I}\\ cannot\\ stop\\ think\\ \phantom{about}\\ \phantom{it}\\ afterward};
-                \node at (0,-3.5) {Text};
-                \node at (4,-3.5) {Tokenization};
-                \node at (7,-3.5) {Lemmatization};
-                \node at (10,-3.5) {Stop words};
-                \draw [->] (1.7, 0) -- (3,0);
-                \draw [->] (5,0) -- (6,0);
-                \draw [->] (8,0) -- (9,0);
-            \end{tikzpicture}
-        \end{figure}
-    }
-    \only<+>{
-        \begin{figure}
-            \begin{tikzpicture}[>=stealth, text-node/.style={
-                rectangle, draw=black, fill=gray!20, text centered, rounded corners, font=\small}]
-                \node [text-node, text width = 1.5cm] (stop) at (0,0) {\phantom{this}\\ movie\\ be\\ so\\ good\\ \phantom{--}\\ \phantom{I}\\ cannot\\ stop\\ think\\ \phantom{about}\\ \phantom{it}\\ afterward};
-                \node [text-node, text width = 1.5cm] (stop) at (4,0) {\phantom{this}\\ movie\\ be\\ so\\ \colorbox{green!20}{good}\\ \phantom{--}\\ \phantom{I}\\ cannot\\ stop\\ think\\ \phantom{about}\\ \phantom{it}\\ afterward};
-                \node [text-node, text width = 1.5cm, fill = green!20] (stop) at (8,0) {\phantom{this}\\ movie\\ be\\ so\\ good\\ \phantom{--}\\ \phantom{I}\\ cannot\\ stop\\ think\\ \phantom{about}\\ \phantom{it}\\ afterward};
-                \node at (8,-3.5) {$sentiment = +.125$};
-                \draw [->] (1, 0) -- (3,0);
-                \draw [->] (5, 0) -- (7,0);
-            \end{tikzpicture}
-        \end{figure}
-    }
-    \only<+>{
-        \framesubtitle{Dictionary-based approach}
-        \begin{figure}
-            \begin{tikzpicture}[>=stealth, text-node/.style={
-                rectangle, draw=black, fill=gray!20, text centered, rounded corners}]
-                \node[text-node, text width = 3cm, fill = green!20] at (0,0) {This movie was so good -- I couldn't stop thinking about it afterward.};
-                \node[text-node, text width = 3cm, fill = red!20] at (3,4) {The actors were great, but the story was boring and predictable.};
-                \node[text-node, text width = 3cm, fill = green!20] at (4,2) {It looked amazing, but the characters didn't feel real.};
-                \node[text-node, text width = 3cm, fill = green!20] at (9,4) {I loved the action scenes; they kept me hooked the whole time.};
-                \node[text-node, text width = 3cm, fill = red!20] at (8,0) {It felt like the movie was trying too hard to be deep, but it just ended up confusing.};
-            \end{tikzpicture}
-        \end{figure}
-    }
-    \only<+>{
-        \framesubtitle{Machine Learning approach}
-        \begin{figure}
-            \begin{tikzpicture}[>=stealth, text-node/.style={
-                rectangle, draw=black, fill=gray!20, text centered, rounded corners, font=\small}]
-                \node[text-node, text width = 3cm] at (0,0) {This move was so good -- I couldn't stop thinking about it afterward.};
-                \draw[fill = black] (4,-1) rectangle (6,1);
-                \node[text-node, text width = 3cm, fill = green!20] at (10,0) {This move was so good -- I couldn't stop thinking about it afterward.};
-                \draw [->] (1.7,0) -- (3.9,0);
-                \draw [->] (6.1,0) -- (8.3,0);
-                \node at (0,-2.5) {Text};
-                \node at (5,-2.5) {Black box};
-                \node at (10,-2.5) {$sentiment = +.93$};
-            \end{tikzpicture}
-        \end{figure}
-
-    }
-\end{frame}
-\begin{frame}
-    \frametitle{Topic Modeling}
-    \only<+>{
-        \begin{figure}
-        \begin{tikzpicture}[>=stealth, scale = .5, small/.style={
-            % The shape:
-            rectangle,
-            % The size:
-            minimum size=.75cm,
-            % The border
-            thick, draw=black,
-            % The filling
-            fill=white}]
-        \foreach \x/\y in {0/0,2/0,8/0}{
-          \draw [fill = yellow!30] (\x + 0,0 - \y) rectangle (\x + 1.5,2 - \y);
-          \draw (\x + .2,1.4 - \y) rectangle (\x + 1.3,1.9 - \y);
-          \foreach \z in {.2,.3,...,1.3}{
-            \draw (\x + .2,\z - \y) -- (\x + 1.3,\z - \y);
-          }
-        }
-        \foreach \x/\y in {12/0,6/0,10/0}{
-          \draw [fill = red!30] (\x + 0,0 - \y) rectangle (\x + 1.5,2 - \y);
-          \draw (\x + .2,1.4 - \y) rectangle (\x + 1.3,1.9 - \y);
-          \foreach \z in {.2,.3,...,1.3}{
-            \draw (\x + .2,\z - \y) -- (\x + 1.3,\z - \y);
-          }
-        }
-        \foreach \x/\y in {4/0}{
-          \draw [fill = green!30] (\x + 0,0 - \y) rectangle (\x + 1.5,2 - \y);
-          \draw (\x + .2,1.4 - \y) rectangle (\x + 1.3,1.9 - \y);
-          \foreach \z in {.2,.3,...,1.3}{
-            \draw (\x + .2,\z - \y) -- (\x + 1.3,\z - \y);
-          }
-        }
-        \foreach \x/\y in {3/4, 3/4.3, 3/4.6}{
-          \draw [fill = yellow!30] (\x + 0,0 - \y) rectangle (\x + 1.5,2 - \y);
-          \draw (\x + .2,1.4 - \y) rectangle (\x + 1.3,1.9 - \y);
-          \foreach \z in {.2,.3,...,1.3}{
-            \draw (\x + .2,\z - \y) -- (\x + 1.3,\z - \y);
-          }
-        }
-        \foreach \x/\y in {9/4, 9/4.3, 9/4.6}{
-          \draw [fill = red!30] (\x + 0,0 - \y) rectangle (\x + 1.5,2 - \y);
-          \draw (\x + .2,1.4 - \y) rectangle (\x + 1.3,1.9 - \y);
-          \foreach \z in {.2,.3,...,1.3}{
-            \draw (\x + .2,\z - \y) -- (\x + 1.3,\z - \y);
-          }
-        }
-        \foreach \x/\y in {6/4}{
-          \draw [fill = green!30] (\x + 0,0 - \y) rectangle (\x + 1.5,2 - \y);
-          \draw (\x + .2,1.4 - \y) rectangle (\x + 1.3,1.9 - \y);
-          \foreach \z in {.2,.3,...,1.3}{
-            \draw (\x + .2,\z - \y) -- (\x + 1.3,\z - \y);
-          }
-        }
-        \draw (.75,0) [->] -- (3.65, -2);
-        \draw (2.75,0) [->] -- (3.75, -2);
-        \draw (8.75,0) [->] -- (3.85, -2);
-        \draw (4.75,0) [->] -- (6.75, -2);
-        \draw (6.75,0) [->] -- (9.65, -2);
-        \draw (10.75,0) [->] -- (9.75, -2);
-        \draw (12.75,0) [->] -- (9.85, -2);
-    
-        \draw [fill = yellow!30] (3, -8.6) rectangle (4.5, -6.6);
-        \draw [fill = red!30] (9, -8.6) rectangle (10.5, -6.6);
-    
-        \draw (3.75, -4.8) -- ++(270:1.6) -- ++(0:6) -- ++(90:1.6);
-    
-        \node at (16,1) {Corpus};
-        \node at (16,-3) {Separated Topics};
-        \node at (16,-7.3) {Identified Narratives};
-    
-        \end{tikzpicture}
-    \end{figure}
-    }
-    \only<+>{
-        \begin{figure}
-            \begin{tikzpicture}[>=stealth, text-node/.style={
-                rectangle, draw=black, fill=gray!20, text centered, rounded corners}]
-                \node[text-node, text width = 3cm] (T1) at (0,0) {Fear of failure leads to failure.};
-                \node[text-node, text width = 3cm] (T2) at (3,4) {If we do not face our fears, our fears will chase us forever.};
-                \node[text-node, text width = 3cm] (T3) at (4,1.5) {Do not fear to love for the first time.};
-                \node[text-node, text width = 3cm] (T4) at (9,4) {We do not need to explain our love. We only need to show it.};
-                \node[text-node, text width = 3cm] (T5) at (8,0) {Love yourself first because this is the person you are going to spend the rest of your life with.};
-                \node at (-2.25, 0) {T1 = };
-                \node at (.75, 4) {T2 = };
-                \node at (1.75,1.5) {T3 = };
-                \node at (6.75,4) {T4 = };
-                \node at (5.75,0) {T5 = };
-            \end{tikzpicture}
-        \end{figure}
-    }
-    \only<+>{
-        \begin{enumerate}
-            \item Corpus preprocessing: Tokenization $=>$ Lemmatization $=>$ Stop
-            words removal.
-            \item Vectorization of the text (text embeddings).
-            \item Training a model.
-            \item Testing the model.
-        \end{enumerate}
-    }
-    \only<+>{
-        \framesubtitle{What is a vector?}
-        \begin{definition}{}
-            In mathematics and physics, \emph{vector} is a term that refers to
-            quantities that cannot be expressed by a single number (a scalar),
-            or to elements of some vector spaces.
+            \emph{Webscraping} is a process of (usually) automatic extraction of data from a website or multiple websites. In other words, it is a form of copying the data from a website into a local database or spreadsheet.
         \end{definition}
     }
-    \only<5,6>{
-        \framesubtitle{What is a vector?}
-        \begin{figure}
-            \begin{tikzpicture}
-                \draw[->, thick] (0, 0) --++ (0: 6cm) node [below] {x};
-                \draw[->, thick] (0, 0) --++ (90: 6cm) node [left] {y};
-                \draw node at (4cm,3cm) {\LARGE.};
-                \draw<5> node at (4,3) [right] {A};
-                \foreach \x in {1,...,5}{
-                    \draw (\x, -.05) node [below] {\x} -- (\x, .05);
-                    \draw (-.05, \x) node [left] {\x} -- (.05, \x);
-                }
-                \draw<6> node at (4,3) [right]{A(4,3)};
-                \draw<6> [dashed, thin, gray] (4,0) -- (4,3);
-                \draw<6> [dashed, thin, gray] (0,3) -- (4,3);
-                \draw<6> node at (4,3) [right]{A(4,3)};
-            \end{tikzpicture}
-    \end{figure}
-    }
-    \only<7>{
-        \framesubtitle{Bag of words}
-        \begin{figure}
-            \begin{tikzpicture}[>=stealth, text-node/.style={
-                rectangle, draw=black, fill=gray!20, text centered, rounded corners}]
-                \node[text-node, text width = 3cm] (T1) at (0,0) {fear \phantom{of} failure lead \phantom{to} failure};
-                \node[text-node, text width = 3cm] (T2) at (3,4) {\phantom{If} \phantom{we} do not face \phantom{our} fear \phantom{our} fear be chase \phantom{us} forever};
-                \node[text-node, text width = 3cm] (T3) at (4,1.5) {do not fear \phantom{to} love \phantom{for} \phantom{the} first time};
-                \node[text-node, text width = 3cm] (T4) at (9,4) {\phantom{We} do not need \phantom{to} explain \phantom{our} love \phantom{We} only need \phantom{to} show \phantom{it}};
-                \node[text-node, text width = 3cm] (T5) at (8,0) {love \phantom{yourself} first \phantom{because} \phantom{this} be \phantom{the} person \phantom{you} be go \phantom{to} spend \phantom{the} rest \phantom{of} \phantom{your} life \phantom{with}};
-                \node at (-2.25, 0) {T1 = };
-                \node at (.75, 4) {T2 = };
-                \node at (1.75,1.5) {T3 = };
-                \node at (6.75,4) {T4 = };
-                \node at (5.75,0) {T5 = };
-            \end{tikzpicture}
-        \end{figure}
-    }
-    \only<8>{
-        \framesubtitle{Bag of words}
-        \begin{figure}
-            \begin{tikzpicture}[>=stealth, text-node/.style={
-                rectangle, draw=black, fill=gray!20, text centered, rounded corners}]
-                \node[text-node, text width = 3cm] (T1) at (0,0) {\colorbox{yellow}{fear} \phantom{of} failure lead \phantom{to} failure};
-                \node[text-node, text width = 3cm] (T2) at (3,4) {\phantom{If} \phantom{we} do not face \phantom{our} \colorbox{yellow}{fear} \phantom{our} \colorbox{yellow}{fear} be chase \phantom{us} forever};
-                \node[text-node, text width = 3cm] (T3) at (4,1.5) {do not \colorbox{yellow}{fear} \phantom{to} \colorbox{blue}{love} \phantom{for} \phantom{the} first time};
-                \node[text-node, text width = 3cm] (T4) at (9,4) {\phantom{We} do not need \phantom{to} explain \phantom{our} \colorbox{blue}{love} \phantom{We} only need \phantom{to} show \phantom{it}};
-                \node[text-node, text width = 3cm] (T5) at (8,0) {\colorbox{blue}{love} \phantom{yourself} first \phantom{because} \phantom{this} be \phantom{the} person \phantom{you} be go \phantom{to} spend \phantom{the} rest \phantom{of} \phantom{your} life \phantom{with}};
-                \node at (-2.25, 0) {T1 = };
-                \node at (.75, 4) {T2 = };
-                \node at (1.75,1.5) {T3 = };
-                \node at (6.75,4) {T4 = };
-                \node at (5.75,0) {T5 = };
-            \end{tikzpicture}
-        \end{figure}
-    }
-    \only<9>{
-        \framesubtitle{How to convert text into a vector?}
-        \begin{figure}
-            \begin{tikzpicture}
-                \draw[->, thick] (0, 0) --++ (0: 6cm) node [below] {fear};
-                \draw[->, thick] (0, 0) --++ (90: 6cm) node [left] {love};
-                \foreach \x in {1,...,5}{
-                    \draw (\x, -.05) node [below] {\x} -- (\x, .05);
-                    \draw (-.05, \x) node [left] {\x} -- (.05, \x);
-                }
-                \node at (1,0) {\LARGE .};
-                \node at (1,0) [above] {\textcolor{yellow}{T1}};
-                \node at (2,0) {\LARGE .};
-                \node at (2,0) [above] {\textcolor{yellow}{T2}};
-                \node at (0,1) {\LARGE .};
-                \node at (0,1) [above right] {\textcolor{blue}{T4}};
-                \node at (0,1) [below right] {\textcolor{blue}{T5}};
-                \node at (1,1) {\LARGE .};
-                \node at (1,1) [above right] {\textcolor{green}{T3}};
-            \end{tikzpicture}
-    \end{figure}
-    }
-    \only<10>{
-        \framesubtitle{Cosine similarity}
-        \begin{figure}
-            \begin{tikzpicture}
-                \draw[->, thick] (0, 0) --++ (0: 6cm) node [below] {x};
-                \draw[->, thick] (0, 0) --++ (90: 6cm) node [left] {y};
-                \foreach \x in {1,...,5}{
-                    \draw (\x, -.05) node [below] {\x} -- (\x, .05);
-                    \draw (-.05, \x) node [left] {\x} -- (.05, \x);
-                }
-                \draw (0,0) --++ (30:4) node [above] {$T_n(x_{n}, y_{n})$};
-                \draw (0,0) --++ (75:5) node [above] {$T_{n+1}(x_{n+1}, y_{n+1})$};
-                \draw (0,0) --++ (30:4) node {\LARGE .};
-                \draw (0,0) --++ (75:5) node {\LARGE .};
-                \draw (0,0) ++(30:1) arc (30:75:1) node [xshift = .2cm, yshift = -.4cm] {$\alpha$};
-
-            \end{tikzpicture}
-        \end{figure}
-    }
-    \only<11>{
-        \framesubtitle{Cosine similarity}
-        \begin{figure}
-            \begin{tikzpicture}[help lines/.style={black!50,very thin}]
-                \foreach \x in {-360,-270,-180,-90,+90,+180,+270,+360} \draw ({\x/90},-0.05) -- ({\x/90},0.05) node[below] {$\x^\circ$};
-                \foreach \y in {-1,1} \draw (-0.05,\y) -- (0.05, \y) node [left] {$\y$};
-                \draw[<->,thick] (-5,0)--(5,0) node[right] {$x$};
-                \draw[<->,thick] (0,-2.25)--(0,2.25) node[above] {$y$};
-                \draw[very thick,color=black] plot [domain={-360/90}:{360/90},smooth] (\x,{cos(90*\x)});
-            \end{tikzpicture}
-        \end{figure}
-    }
-    \only<12>{
-        \framesubtitle{Cosine similarity}
-        \begin{definition}{}
-            In data analysis, \emph{cosine similarity} is a measure of similarity
-            between two non-zero vectors defined in an inner product space.
-            Cosine similarity is the cosine of the angle between the vectors;
-            that is, it is the dot product of the vectors divided by the product
-            of their lengths. It follows that the cosine similarity does not
-            depend on the magnitudes of the vectors, but only on their angle.
-            The cosine similarity always belongs to the interval [−1,1].  For
-            example, two proportional vectors have a cosine similarity of 1, two
-            orthogonal vectors have a similarity of 0, and two opposite vectors
-            have a similarity of -1. 
-       \end{definition}
-    }
-    \only<13>{
-        \begin{figure}
-            \begin{tikzpicture}
-                \draw[->, thick] (0, 0) --++ (0: 6cm) node [below] {x};
-                \draw[->, thick] (0, 0) --++ (90: 6cm) node [left] {y};
-                \foreach \x in {1,...,5}{
-                    \draw (\x, -.05) node [below] {\x} -- (\x, .05);
-                    \draw (-.05, \x) node [left] {\x} -- (.05, \x);
-                }
-                \draw (0,0) ++ (30:4) node {\textcolor{blue}{\tiny o}};
-                \draw (0,0) ++ (32:4) node {\textcolor{blue}{\tiny o}};
-                \draw (0,0) ++ (28:3.9) node {\textcolor{blue}{\tiny o}};
-                \draw (0,0) ++ (30:3.5) node {\textcolor{blue}{\tiny o}};
-                \draw (0,0) ++ (35:4) node {\textcolor{blue}{\tiny o}};
-                \draw (0,0) ++ (28:3.8) node {\textcolor{blue}{\tiny o}};
-                \draw (0,0) ++ (30:3.9) node {\textcolor{blue}{\tiny o}};
-                \draw (0,0) ++ (34:3.8) node {\textcolor{blue}{\tiny o}};
-                \draw (0,0) ++ (32:3.9) node {\textcolor{blue}{\tiny o}};
-                \draw (0,0) ++ (327:3.5) node {\textcolor{blue}{\tiny o}};
-                \draw (0,0) ++ (35:4.2) node {\textcolor{blue}{\tiny o}};
-                \draw (0,0) ++ (32:3.8) node {\textcolor{blue}{\tiny o}};
-                \draw (0,0) ++ (75:5) node {\textcolor{yellow}{\tiny x}};
-                \draw (0,0) ++ (80:4.8) node {\textcolor{yellow}{\tiny x}};
-                \draw (0,0) ++ (76:4.9) node {\textcolor{yellow}{\tiny x}};
-                \draw (0,0) ++ (72:5.1) node {\textcolor{yellow}{\tiny x}};
-                \draw (0,0) ++ (76:5) node {\textcolor{yellow}{\tiny x}};
-                \draw (0,0) ++ (82:4.6) node {\textcolor{yellow}{\tiny x}};
-                \draw (0,0) ++ (76:5.2) node {\textcolor{yellow}{\tiny x}};
-                \draw (0,0) ++ (73:5.1) node {\textcolor{yellow}{\tiny x}};
-                \draw (0,0) ++ (45:1) node {\textcolor{green}{\tiny *}};
-                \draw (0,0) ++ (46:.9) node {\textcolor{green}{\tiny *}};
-                \draw (0,0) ++ (47:1.1) node {\textcolor{green}{\tiny *}};
-                \draw (0,0) ++ (45:1.2) node {\textcolor{green}{\tiny *}};
-                \draw (0,0) ++ (44:.9) node {\textcolor{green}{\tiny *}};
-                \draw (0,0) ++ (42:.8) node {\textcolor{green}{\tiny *}};
-                \draw (0,0) ++ (48:1.1) node {\textcolor{green}{\tiny *}};
-                \draw (0,0) ++ (47:1) node {\textcolor{green}{\tiny *}};
-
-            \end{tikzpicture}
-
-        \end{figure}
-    }
-    \only<14>{
-        \framesubtitle{Output}
-        \scriptsize
-        For example, imagine you have the following set of sentences (in real-world we would operate on documents that contain multiple sentences).
-
-        \begin{itemize}
-            \item I like to eat broccoli and bananas.
-            \item I ate a banana and spinach smoothie for breakfast.
-            \item Chinchillas and kittens are cute.
-            \item My sister adopted a kitten yesterday.
-            \item Look at this cute hamster munching on a piece of broccoli.
-        \end{itemize}
-
-        The LDA model returns more or less the following information about the probability to belong each sentence to a topic.
-        
-        \begin{itemize}
-            \item Sentences 1 and 2: 100\% Topic A
-            \item Sentences 3 and 4: 100\% Topic B
-            \item Sentence 5: 60\% Topic A, 40\% Topic B
-        \end{itemize}
-
-        And the most representative words for a topic.
-        
-        \begin{itemize}
-            \item Topic A: 30\% broccoli, 15\% bananas, 10\% breakfast, 10\% munching, etc. (at which point, you could interpret topic A to be about food)
-            \item Topic B: 20\% chinchillas, 20\% kittens, 20\% cute, 15\% hamster, etc. (at which point, you could interpret topic B to be about cute animals)
-        \end{itemize}
-
-    }
 \end{frame}
 
+\subsection{HTML}
 
 \begin{frame}
-    \frametitle{For the class in two weeks}
-    \begin{itemize}
-        \item Biesaga, M., Domaradzka, A., Roszczyńska-Kurasińska, M., Talaga,
-        S., \& Nowak, A. (2023). The effect of the pandemic on European
-        narratives on smart cities and surveillance. Urban Studies,
-        004209802211383. \href{https://doi.org/10.1177/00420980221138317}{\textcolor{blue}{https://doi.org/10.1177/00420980221138317}}.
-    \end{itemize}
+    \frametitle{HyperText Markup Language}
+    \begin{definition}{}
+        \emph{HyperText Markup Language} (HTML) is the standard markup language for
+        documents designed to be displayed in a web browser. It defines the
+        content and structure of web content. It is often assisted by
+        technologies such as Cascading Style Sheets (CSS) and scripting
+        languages such as JavaScript.
+    \end{definition}
 \end{frame}
+
+\begin{frame}[fragile]
+\frametitle{HyperText Markup Language}
+\begin{minted}[fontsize=\footnotesize]{html}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Justyna Kowalczyk fandom
+        </title>
+    </head>
+    <body>
+        <h1>Why Justyna Kowalczyk is the best?</h1>
+        <p>
+            Because she is just <b>the best</b> cross-country 
+            skier in the history of the sport. You can learn
+            more about her amazing achievements visiting
+            her Wikipedia webpage:
+            https://pl.wikipedia.org/wiki/Justyna_Kowalczyk.
+        </p>
+    </body>
+</html>
+\end{minted}
+\end{frame}
+
+\begin{frame}
+    \frametitle{HyperText Markup Language}
+    \only<+>{
+        \framesubtitle{What are tags?}
+        Tags are used to mark up the start of an HTML element and they are enclosed
+        in \textbf{angle brackets}. The most important is the <html> tag. Inside
+        this tag, between <html> and </html> all other elements live. In the 
+        example from the previous slide we had the following tags:
+        \begin{itemize}
+            \item {<head></head>} -- element contains meta-information about the document
+            \item {<title></title>} -- element specifies a title for the document
+            \item {<body></body>} -- element contains the visible page content
+            \item {<h1></h1>} -- element defines a large heading
+            \item {<p></p>} -- element define a paragraph
+            \item {<b></b>} -- element define a boldface
+        \end{itemize}
+    }
+\end{frame}
+
+\section{API}
+
+\begin{frame}
+    \frametitle{Application Programming Interface}
+    \only<+>{
+        \begin{figure}
+            \includegraphics[scale = .4]{png/api.jpg}
+        \end{figure}
+    }
+    \only<+>{
+        \begin{figure}
+            \includegraphics[width = \textwidth]{png/twitter.png}
+            \caption{from \textcolor{blue}{\href{https://developer.twitter.com/en/use-cases/analyze}{Developer X}}}
+        \end{figure}
+    }
+    \only<+>{
+        \begin{definition}
+            \emph{Aplication Programming Interface} is a communication protocol between a client and a server intended to simplify the building of client-side software. In other words, it is a contract between the client and the server which defines the format of possible requests and the format of the response (i.e. format of the data).
+        \end{definition}
+    }
+\end{frame}
+
+\section{Examples}
+\begin{frame}
+    \frametitle{Reddit}
+    \only<+>{
+        \begin{figure}
+            \centering
+            \includegraphics[width = .3\textwidth]{reddit_log.png}
+        \end{figure}
+    }
+    \only<+>{
+        \begin{figure}
+            \centering
+            \includegraphics[width = \textwidth]{hicss.png}
+        \end{figure}
+    }
+    \only<+>{
+        \framesubtitle{(Roszczyńska-Kurasińska et al., 2025)}
+        \begin{figure}
+            \centering
+            \includegraphics[width = .7\textwidth]{hicss-figure.png}
+        \end{figure}
+
+    }
+    \frametitle{Wikipedia}
+    \only<+>{
+        \begin{figure}
+            \centering
+            \includegraphics[width = .3\textwidth]{wiki_logo.png}
+        \end{figure}
+    }
+    \only<+>{
+        \begin{figure}
+            \centering
+            \includegraphics[width = \textwidth]{wiki1.png}
+        \end{figure}
+    }
+    \only<+>{
+        \framesubtitle{(Wagner et al., 2015)}
+        \begin{itemize}
+            \item \textbf{Coverage bias} determines differences between the
+            number of notable women and men portrayed on Wikipedia.             
+            \item \textbf{Visibility bias} reflects how many articles about men
+            or women make it to the front page of Wikipedia.        
+            \item \textbf{Structural bias} quantifies gender homophily/disassortativity,
+            i.e. gender-specific tendencies to preferably link articles of
+            notable people with the same or different gender. 
+            \item \textbf{Lexical bias} reveals inequalities in the words used
+            to describe notable men and women on Wikipedia.
+        \end{itemize}
+    }
+    \only<+>{
+        \framesubtitle{(Wagner et al., 2015)}
+        \begin{itemize}
+            \item \textbf{Coverage bias:} Men and women are covered equally well
+            in all six Wikipedia language editions. 
+            \item \textbf{Visibility bias:} No evidence for male-bias in the
+            selection procedure of articles that are featured on the startpage
+            of the English Wikipedia.
+            \item \textbf{Structural bias:} Women on Wikipedia tend
+            to be more linked to men than vice versa. 
+            \item \textbf{Lexical bias:} Romantic relationships and
+            family-related issues are much more frequently discussed on
+            Wikipedia articles about women than men.
+        \end{itemize}
+    }
+    \only<+>{
+        \begin{figure}
+            \centering
+            \includegraphics[width = \textwidth]{wiki2.png}
+        \end{figure}
+    }
+    \only<+>{
+        \framesubtitle{(Ruprechter et al., 2020)}
+        \begin{figure}
+            \centering
+            \includegraphics[width = .8\textwidth]{wikipedia_chart.png}
+        \end{figure}
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{HEART project}
+    \only<1,2,3>{
+        \framesubtitle{Study design}
+        \begin{tikzpicture}
+            \node [text width = 4cm] at (-5,0) {\includegraphics[width = \textwidth]{survey.png}};
+            \node at (-5,-2) {\footnotesize\textsc{Before Survey}};
+            \node<2-> [text width = 4cm] at (0,0) {\includegraphics[width = \textwidth]{regular_visits.png}};
+            \node<2-> at (0,-2) {\footnotesize\textsc{Regular Visits}};
+            \node<3> [text width = 4cm] at (5,0) {\includegraphics[width = \textwidth]{survey.png}};
+            \node<3> at (5,-2) {\footnotesize\textsc{After Survey}};
+
+        \end{tikzpicture}
+    }
+    \only<4>{
+        \framesubtitle{Expected workflow}
+        \centering
+        \begin{tikzpicture}
+            \node [text width = 1cm] at (0,0) {\includegraphics[width = \textwidth]{questionnaire.png}};
+            \node at (0,-1) {\footnotesize\textsc{Survey}};
+            \node [text width = 1cm] at (2,0) {\includegraphics[width = \textwidth]{database.png}};
+            \node at (2,-1) {\footnotesize \textsc{DataBase}};
+            \node [text width = 1cm] at (4,0) {\includegraphics[width = \textwidth]{spreadsheet.png}};
+            \node at (4, -1) {\footnotesize \textsc{Spreadsheet}};
+            \node [text width = 1cm] at (6,0) {\includegraphics[width = \textwidth]{analysis.png}};
+            \node at (6,-1) {\footnotesize \textsc{Analysis}};
+            \draw [->, -stealth, thick] (.7,0) -- (1.3,0);
+            \draw [->, -stealth, thick] (2.7,0) -- (3.3,0);
+            \draw [->, -stealth, thick] (4.7,0) -- (5.3,0);
+        \end{tikzpicture}
+    }
+    \only<5,6>{
+        \framesubtitle{Actual workflow}
+        \centering
+        \begin{tikzpicture}
+            \node [text width = 1cm] at (0,0) {\includegraphics[width = \textwidth]{questionnaire.png}};
+            \node at (0,-1) {\footnotesize\textsc{Survey}};
+            \node [text width = 1cm] at (2.5,0) {\includegraphics[width = \textwidth]{database.png}};
+            \node at (2.5,-1) {\footnotesize \textsc{DataBase}};
+            \node [text width = 1cm] at (5,0) {\includegraphics[width = \textwidth]{cleaning.png}};
+            \node at (5,-1) {\footnotesize \textsc{Preprocessing}};
+            \node [text width = 1cm] at (7.5,0) {\includegraphics[width = \textwidth]{spreadsheet.png}};
+            \node at (7.5, -1) {\footnotesize \textsc{Spreadsheet}};
+            \node [text width = 1cm] at (10,0) {\includegraphics[width = \textwidth]{analysis.png}};
+            \node at (10,-1) {\footnotesize \textsc{Analysis}};
+            \draw [->, -stealth, thick] (.7,0) -- (1.8,0);
+            \draw [->, -stealth, thick] (3.2,0) -- node [above] {API} (4.3,0);
+            \draw [->, -stealth, thick] (5.7,0) -- (6.8,0);
+            \draw [->, -stealth, thick] (8.2,0) -- (9.3,0);
+            \draw<6> [color = orange] (5,0) circle (.8cm);
+        \end{tikzpicture}
+    }
+\end{frame}
+\section{Migrations 2.0}
+
+\begin{frame}
+    \frametitle{Measuring Migrations 2.0}
+    \begin{figure}
+        \includegraphics[width = \textwidth]{png/table.png}
+        \caption{Tjaden, 2021}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{For the next week}
+    \begin{enumerate}
+        \item Find a scientific article that collects data either through API or webscrapping (Google Scholar). It should be published in a peer-reviewed social science journal and have at least 10 citations.
+        \item Read it.
+        \item Submit the title, authors, year of publication, journal, and maximum 200 words takeaway message in Google Classroom. It should consist of at least 4 sentences: problem statement, research question/hypothesis, what they did, main finding.
+        \item Deadline: \textbf{14th November 2025, 11:59 AM}.
+    \end{enumerate}
+
+\end{frame}
+
 \end{document}

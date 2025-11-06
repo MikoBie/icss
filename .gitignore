@@ -400,6 +400,7 @@ TSWLatexianTemp*
 lista.csv
 lista.xlsx
 lista_2023.xlsx
+*.xlsx
 
 # Homework
 homework/*
