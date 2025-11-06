@@ -410,3 +410,5 @@ homework/*
 
 # MS Office temp files
 ~$*
+
+tests/
