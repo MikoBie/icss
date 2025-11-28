@@ -74,6 +74,9 @@
    \renewcommand{\ULthickness}{.4pt}% Resetting to ulem default
    }
 }
+\definecolor{YELLOW}{RGB}{255, 234, 33}
+\definecolor{BLUE}{RGB}{70, 174, 194}
+\definecolor{RED}{RGB}{199, 36, 106}
 \newcommand{\centered}[1]{\begin{tabular}{l} #1 \end{tabular}}
 \setbeamertemplate{section in toc}[square]
 \setbeamertemplate{subsection in toc}[square]
@@ -94,10 +97,10 @@
 \begin{frame}
    \frametitle{Narratives}
    \begin{itemize}
-      \item Humans are "storytelling animals" (Gottschall, 2012). People are not computers. We think not with data, but with storie (Robinson \& Hawpe, 1986).
-      \item The Psychology of Life Stories (McAdams, 2001).
-      \item Whenever we find ourselves in a new situation or face a decision we use narratives to understand the circumstances and compare potential scenarios (Beach, 2021). Stories are thus the primary tool by which we experience the world. They provide meaning to reality (Popova, 2015). 
-      \item Many studies suggest that fake news tend to generate more attention and spread faster than true information. One of the reasons for that may be that they represent attractive narrative structures (Baptista \& Gradim, 2020). \alert{Fake news is perceived as more interesting and more relevant.}
+      \item<1-> Humans are "storytelling animals" (Gottschall, 2012). People are not computers. We think not with data, but with stories (Robinson \& Hawpe, 1986).
+      \item<2-> The Psychology of Life Stories (McAdams, 2001).
+      \item<3-> Whenever we find ourselves in a new situation or face a decision, we use narratives to understand the circumstances and compare potential scenarios (Beach, 2021). Stories are thus the primary tool by which we experience the world. They provide meaning to reality (Popova, 2015). 
+      \item<4-> Many studies suggest that fake news tends to generate more attention and spread faster than true information. One of the reasons for that may be that they represent attractive narrative structures (Baptista \& Gradim, 2020). \alert{Fake news is perceived as more interesting and more relevant.}
    \end{itemize}
 \end{frame}
 
@@ -107,10 +110,10 @@
       Narratives tell us:
       \begin{enumerate}
          \item What is this? 
-         \item How is the situation changing and what should we do about it?
+         \item How is the situation changing, and what should we do about it?
          \item Who am I in this situation with? 
       \end{enumerate}
-      Thus narratives perform 3 main functions:
+      Thus, narratives perform 3 main functions:
       \begin{enumerate}
          \item Organising our perception
          \item Guiding our actions
@@ -125,7 +128,7 @@
          Narratives are \alert{NOT} “themes”. What is said is only one element of
          the narrative. Equally important is the overall structure of change and
          the sense of community (who are we working with? against whom?). Seemingly
-         different stories about vaccines, masks, and lockdowns may occur to be the
+         different stories about vaccines, masks, and lockdowns may turn out to be the
          same story. Only the superficial props are changing. And the change is
          irrelevant because it has never really been about vaccines or masks, but
          about a deeper problem symbolized by these preventive measures.
@@ -136,6 +139,20 @@
 \begin{frame}
    \frametitle{Methodology}
 
+   \centering
+
+   \begin{tikzpicture}[node distance=3cm]
+      % Specification of nodes (position, etc.)
+      \node (topic)   [base, fill = YELLOW] {Topic Modeling};
+      \node (extraction) [base, right of=topic, fill = BLUE] {Narratives Extraction};
+      \node (annotation) [base, right of=extraction, fill = BLUE] {Data Annotation};
+      \node (analysis) [base, right of=annotation, fill = RED] {Quantitative Analysis};
+      % Specification of paths
+      \draw[->] (topic) -- (extraction);
+      \draw[->] (extraction) -- (annotation);
+      \draw[->] (annotation) -- (analysis);
+   \end{tikzpicture}
+
 \end{frame}
 
 \begin{frame}
@@ -145,6 +162,10 @@
       \includegraphics[width = .7\textwidth]{climate_narratives.png}
    }
    \only<2>{
+      \centering
+      \includegraphics[width = \textwidth]{narrative_table.png}
+   }
+   \only<3>{
       \framesubtitle{We need to resist the green dystopia}
       \begin{minipage}{.49\textwidth}
          \includegraphics[width = \textwidth]{N1.png}
@@ -153,7 +174,7 @@
          \includegraphics[width = \textwidth]{N1_1.png}
       \end{minipage}
    }
-   \only<3>{
+   \only<4>{
       \framesubtitle{Let's not panic!}
       \begin{minipage}{.49\textwidth}
          \includegraphics[width = \textwidth]{N3.jpg}
@@ -162,7 +183,7 @@
          \includegraphics[width = \textwidth]{N3_1.png}
       \end{minipage}
    }
-   \only<4>{
+   \only<5>{
       \framesubtitle{Distribution of narratives}
       \centering
       \includegraphics[width = .4\textwidth]{narratives-dists.png}
@@ -203,5 +224,12 @@
 
 \begin{frame}
    \frametitle{Discussion}
+   \begin{enumerate}
+      \item Imagine you want to investigate what the opinions are on climate
+      change? How would you approach it? What sources would you use?
+      \item What are the possible pitfalls and risks of NLP tools?
+      \item What topic modeling, sentiment analysis, automatic classification
+      can offer to psychologists?
+   \end{enumerate}
 \end{frame}
 \end{document}
