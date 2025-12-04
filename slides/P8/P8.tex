@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
 \usepackage{ulem}
 \usepackage{tikz}
 \usepackage{booktabs}
@@ -82,203 +82,255 @@
 \setbeamercovered{transparent} 
 
 \title[]{Introduction to Computational Social Science}
-\subtitle{Working with the GDELT API}
+\subtitle{Computer simulation -- why simulate?}
 \author[]{Mikołaj Biesaga\\ \small{\color{blue}{\href{mailto:m.biesaga@uw.edu.pl}{m.biesaga@uw.edu.pl}}}}
 \institute{\includegraphics[width = 4 cm]{uw.png}}
-\date{April 29, 2025}
+\date{\today}
 \begin{document}
 \begin{frame}
    \titlepage
 \end{frame}
-
-\section[GDELT Project]{What is GDELT Project?}
-
+\section[Models]{Models}
 \begin{frame}
-   \frametitle{What is the GDELT Project?}
+   \frametitle{What is a model?}
    \only<1>{
-      \begin{definition}
-         Global Database of Events, Language, and Tone (GDELT) project is a
-         repository of global events and news articles. The GDELT Project monitors
-         a \alert{sample} of the world's broadcast, print, and web news from nearly every
-         corner of every country in over 100 languages and identifies the people,
-         locations, organizations, themes, sources, emotions, counts, quotes,
-         images and events driving our global society every second of every day,
-         creating a free open platform for computing on the entire world.
-      \end{definition}
+      \begin{figure}
+         \includegraphics[width = .3\textwidth]{vogue.jpg}
+         \caption{from \href{https://archive.vogue.com/issue/18921224}{\textcolor{blue}{Vogue}} (December 24, 1892)}
+
+      \end{figure}
    }
    \only<2>{
-      \begin{itemize}
-         \item It is updated every \alert{15 minutes}.
-         \item Realtime translation of \alert{65 languages}.
-         \item Three main data streams:
-         \begin{enumerate}
-            \item Physical activities (events) codified in 300 categories;
-            \item Entities (people, organizations, places) and emotions;
-            \item Visual narratives of the world's news imaginery.
-         \end{enumerate}
-         \item Sources, from hundreds of thousands of global media outlets to special collections like 215 years of digitized books, 21 billion words of academic literature spanning 70 years, human rights archives and even stream of almost 100 television stations across the US.
-      \end{itemize}
+      \begin{block}{Model}
+         In simple terms a model is a \underline{simplified} representation of a system (reality) that helps to understand how the system works/worked in the past/will work in the future.
+      \end{block}
    }
-   \only<3>{
-      \framesubtitle{CAMEO}
+   \only<3,4>{
       \begin{itemize}
-         \item CAMEO (Conflict and Mediation Event Observations) is a coding scheme for events.
-         \item There is a list of 20 main categories of events, such as:
-         \begin{enumerate}
-            \item Make Public Statements;
-            \item Appeal;
-            \item Express Intent to Cooperate;
-            \item ...
-         \end{enumerate}
-         \item Each event is coded with a CAMEO code, which consists of 3-4
-         digits.
-         \item For example, the CAMEO code 01 coresponds to Make Public Statements and 018 Make Emphatethic Comment.
+         \item What is a model? \href{https://youtu.be/RK9m4OmFAbY?feature=shared}{\textcolor{blue}{YouTube video}}
+         \item<4> Formalizing a theory into a model allows the researcher to
+         describe their ideas in a precise, unambiguous way (Goldstone \& Janssen 2005; Epstein 2008). 
+         \item<4> Models are conceptually precise, their assumptions are clear;
+         they allow formal deduction and an easy way to verify their internal
+         validity (Timpone \& Taber 1996). 
+         \item<4> Last but not least they provide an unambiguous way to
+         communicate within the scientific community (Nowak, Rychwalska, \&
+         Borkowski, 2015).
       \end{itemize}
-   }
-   \only<4>{
-      \framesubtitle{CAMEO}
-      \includegraphics[width = \textwidth]{cameo.png}
+      %% \begin{itemize}
+      %%    \item What is a model? \href{https://www.youtube.com/watch?v=uWuNfhDvZz8}{\textcolor{blue}{YouTube video}}
+      %% \end{itemize}
    }
    \only<5>{
-      \framesubtitle{Global Knowledge Graph}
-      \begin{itemize}
-         \item GKG is an array of highly sophisticated natural language
-         processing algorithms (sic!) to each document to compute a range of
-         codified metadata encoding key latent and contextual dimensions of the
-         document.
-         \item Among others these fields inform about:
-         \begin{enumerate}
-            \item Date;
-            \item Source;
-            \item Themes;
-            \item Locations;
-            \item Organizations;
-            \item Persons;
-            \item Tone.
-         \end{enumerate}
-      \end{itemize}
+      \framesubtitle{Simulating}
+      \centering
+      \begin{tikzpicture}
+         \node [text width = 1.5cm] at (0,0) {\includegraphics[width = \textwidth]{observation.png}};
+         \node at (0,-2) {\footnotesize\textsc{Observation}};
+         \node [text width = 1.5cm] at (2.5,0) {\includegraphics[width = \textwidth]{theory_formulation.png}};
+         \node [text width = 2cm, align = center] at (2.5,-2) {\footnotesize\textsc{Theory \\Formulation}};
+         \node [text width = 1.5cm] at (5,0) {\includegraphics[width = \textwidth]{modeling.png}};
+         \node [text width = 1.5cm, align = center] at (5,-2) {\footnotesize\textsc{Model \\Creation}};
+         \node [text width = 1.5cm] at (7.5,0) {\includegraphics[width = \textwidth]{simulation.png}};
+         \node at (7.5,-2) {\footnotesize\textsc{Simulating}};
+         \draw [thick, ->] (.8,0) -- (1.7,0);
+         \draw [thick, ->] (3.3,0) -- (4.2,0);
+         \draw [thick, ->] (5.8,0) -- (6.7,0);
+      \end{tikzpicture}
    }
+   \only<6>{
+      \framesubtitle{What are computer simulations?}
+      \begin{block}{Computer Simulation}
+         Computer simulation is the running of a model on a computer, the model
+         being designed to represent the behaviour of, or the outcome of, a
+         real-world or physical system. The reliability of some models
+         can be determined by comparing their results to the real-world outcomes
+         they aim to predict/explain.
+      \end{block}
+   }
+
+\end{frame}
+\section[Why simulate?]{Why simulate?}
+\begin{frame}
+   \frametitle{Why simulate?}
+   \framesubtitle{Nowak, Rychwalska, \& Borkowski, 2015}
+   \begin{enumerate}
+      \item What is a mental model?
+      \only<2>{
+         \begin{itemize}
+            \item "Mental models are the mind's replicas of phenomena, upon
+            which humans manipulate to learn the mechanism and workings of the
+            surrounding environment." (Ibidem, p.~2)
+            \item Mental models develop most accurately through interaction with
+            the target system (Norman, 1983).
+         \end{itemize}
+      }
+      \item What are the benefits of simulating for scientists?
+   \end{enumerate}
 \end{frame}
 
-\section[Migration Studies]{Migration Studies}
-
+\section[Agent-based models]{Agent-based models}
 \begin{frame}
-   \frametitle{Societal response to Ukrainian refugee migration}
+   \frametitle{Agent-based models}
    \only<1>{
-      \framesubtitle{Weisser, 2022}
-      \begin{itemize}
-         \item Eight weeks after the first shot was fired, the overall number of
-         Ukrainians seeking protection abroad stood at \alert{5.1 million}
-         (UNHCR, 2022).
-         \item Whilst the \alert{influx of (large) refugee populations is typically
-         associated with positive impulses for the local economy}, attitudes towards
-         refugees and political preferences of native residents edge towards a more
-         hostile position. 
-         \item Attitudes towards refugees may also be shaped by news media
-         consumption (De Coninck, 2020).
-         \item Overall, societal attitudes towards refugees depend strongly on the economic and institutional setting.
-         \item Concomitantly, changing attitudes have the potential to shape the
-         politico-economic environment in host countries.
-      \end{itemize}
+      \begin{figure}
+         \centering
+         \includegraphics[width = .6\textwidth]{agent_based_models.png}
+         \caption{Galan et al., 2013}
+      \end{figure}
    }
    \only<2>{
-      \framesubtitle{Research question}
-      \begin{block}{}
-         How did the description of the Ukrainina refugee changed as the effect of
-         the Russian invasion of Ukraine?
+      \begin{block}{Agent-based models}
+         Agent-based models are discrete-time computer simulations used to study
+         the interactions between people, things, places, and time. They are
+         stochastic models built from the bottom up meaning individual agents
+         (often people in epidemiology) are assigned certain attributes.
+         \alert{The agents are programmed to behave and interact with other
+         agents and the environment in certain ways.} These interactions produce
+         emergent effects that may differ from effects of individual agents.
       \end{block}
    }
    \only<3>{
-      \framesubtitle{Method}
-      \begin{itemize}
-         \item Data from the GDELT event database over \alert{16 weeks, starting with 30 December 2021}.
-         \item Within the sample of European primary actors with unambiguous
-         country affiliations, there are \alert{58,007 recorded events} with
-         refugees as secondary actors.
-         \item Each retrieved interaction event between a European primary actor
-         and refugees is classified according to one of the following four
-         modes:
-         \begin{enumerate}
-            \item Verbal cooperation;
-            \item Material cooperation;
-            \item Verbal conflict;
-            \item Material conflict. 
-         \end{enumerate} 
-      \end{itemize}
+      \frametitle{Cellular automata}
+      \begin{figure}
+         \centering
+         \includegraphics[width = .8\textwidth]{grid.png}
+      \end{figure}
    }
    \only<4>{
-      \framesubtitle{Weisser, 2022}
+      \frametitle{Cellular automata}
+      \framesubtitle{Game of life (Conway, 1970)}
       \begin{figure}
-         \includegraphics[width = \textwidth]{weisser_1.png}
+         \includegraphics[width = .8\textwidth]{life.png}
+      \end{figure}
+
+   }
+   \only<5>{
+      \frametitle{Cellular automata}
+      \framesubtitle{Game of life (Conway, 1970)}
+      \begin{figure}
+         \animategraphics[loop,controls, width = .8\textwidth]{10}{game_life-}{0}{148}
+         \caption{from \href{https://playgameoflife.com}{\textcolor{blue}{https://playgameoflife.com}}}
+      \end{figure}
+
+   }
+\end{frame}
+
+\section[Models of segregation]{Models of segregation}
+\begin{frame}
+   \frametitle{Dynamic models of segregation}
+   \framesubtitle{Schelling, 1971}
+   \only<1>{
+      \begin{itemize}
+      \item In 1965, the last of \href{https://en.wikipedia.org/wiki/Jim_Crow_laws}{\textcolor{blue}{Jim Crow's}} racial segregation laws were overturned.
+      \item Despite much effort and investment, segregation still remains a major issue in the U.S. and elsewhere to this date (Cassidy, 2016).
+      \item "If an individual is surrounded by more individuals of different type than the number of individuals of own type, then the individual moves from the current location to a random empty location." (Schelling, 1971)
+   \end{itemize}
+   }
+   \only<2,3>{
+      \begin{figure}
+      \centering
+      \includegraphics<2,3>[width = \textwidth]{schelling1.png}
+      \includegraphics<3>[width = \textwidth]{schelling2.png}
+      \caption{Schelling, 1971}
+      \end{figure}
+   }
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{The world of polygons}
+   \begin{figure}
+      \includegraphics[width = .5\textwidth]{polygons.png}
+      \caption{by Nicky Case from \href{https://ncase.me/polygons/}{\textcolor{blue}{https://ncase.me/polygons/}}}
+   \end{figure}
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{\large Modeling Dynamics of Multicultural Integration and Conflict}
+   \framesubtitle{de Raad, Nowak, \& Borkowski, 2013}
+   \only<1,2>{
+      \only<1>{
+         \begin{itemize}
+            \item Acculturation vs Segregation.
+            \item A positive attitude means that contact with that person increases happiness, a negative attitude is related to a decrease.
+            \item Although happiness increases with the number of positively valued contacts, this increase is not linear.
+            \item Individuals, or agents, were assigned to a group, and given an attitude towards the own and other group ranging from $-1$ to $+1$.
+            \item A decision to move would be made if a spot would provide a higher level of happiness than the current location.
+         \end{itemize}
+      }
+      \only<2>{
+         $$H = A_{own} \times \sqrt{N_{own}} + A_{other} \times \sqrt{N_{other}}$$
+      }
+   }
+   \only<3>{
+      \begin{figure}
+         \begin{minipage}{.49\textwidth}
+            \includegraphics[width = \textwidth]{wouter1.png}
+         \end{minipage}
+         \begin{minipage}{.49\textwidth}
+            \includegraphics[width = \textwidth]{wouter2.png}
+         \end{minipage}
+         \caption{\footnotesize\textbf{Left panel:} Initial state of a
+         simulation in which agents of two groups – depicted in two shades of
+         gray are randomly distributed on a grid.  Black color indicates empty
+         spaces to which agents can potentially move. \textbf{Right panel:}
+         Pattern of intergroup contact between agents with mutual negative
+         attitudes.}
+      \end{figure}
+   }
+   \only<4>{
+      \begin{figure}
+         \includegraphics[width = \textwidth]{wouter3.png}
+         \caption{Pattern of intergroup contact between agents with equal and
+         mutually positive attitudes towards each other. In the picture on the
+         left mutual attitudes are 1.00; in the right picture the mutual
+         attitudes are 0.50.}
       \end{figure}
    }
    \only<5>{
       \begin{figure}
-         \framesubtitle{Weisser, 2022}
-         \includegraphics[width = \textwidth]{weisser_2.png}
-         \caption{Weisser, 2022}
+         \includegraphics[width = \textwidth]{wouter4.png}
+         \caption{\textbf{Left panel:} A pattern of intergroup contact between
+         mutually tolerant agents; attitude towards the other group is 0.00.
+         \textbf{Right panel:} the lighter shaded group has a moderately
+         positive attitude of 0.50, the dark shaded group has a neutral attitude
+         of 0.00.}
       \end{figure}
    }
 
 \end{frame}
-
-\section[GDELT API]{GDELT API}
 \begin{frame}
-   \frametitle{API}
-   \only<+>{
-      \includegraphics[width = \textwidth]{api.jpg}
-   }
-   \only<+>{
-        \begin{definition}
-            \emph{Aplication Programming Interface} is a communication protocol between a client and a server intended to simplify the building of client-side software. In other words, it is a contract between the client and the server which defines the format of possible requests and the format of the response (i.e. format of the data).
-        \end{definition}
-   }
-   \only<+>{
-      \framesubtitle{How to construct a request?}
-      \begin{itemize}
-         \item GDELT API Documentation is available at:
-         \begin{center}
-            \textcolor{blue}{\href{https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/}{https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/}}
-         \end{center}
-         \item The GDELT API lives under the following URL:
-         \begin{center}
-            \textcolor{blue}{\href{https://api.gdeltproject.org/api/v2/doc/doc?}{https://api.gdeltproject.org/api/v2/doc/doc?}}
-         \end{center}
-         \item The simplest request is constructed as follows:
-         \begin{center}
-            \textcolor{blue}{URL?}\textcolor{red}{query=ukraine}
-         \end{center}
-         \item You can add additional parameters to the request, such as:
-         \begin{center}
-            \textcolor{blue}{URL?query=ukraine}\textcolor{red}{\&mode=ArtGallery}
-         \end{center}
-      \end{itemize}
-   }
-   \only<+>{
-      \framesubtitle{How to construct a request?}
-      Construct a request using the GDELT API that will return:
-      \begin{enumerate}
-         \item Tone Chart about migrants;
-         \item Tone Chart about refugees;
-         \item Tone Chart about migrants in Polish media;
-         \item Tone Chart about refugees in Polish media.
-      \end{enumerate}
-   }
-   \only<+>{
-      \framesubtitle{How to construct a request?}
-      \begin{tikzpicture}
-          \node at (0,0) {\includegraphics[width = 7cm]{pl_gdelt_themes_lines.png}};
-          \node at (3.5,-3.75) {\includegraphics[width = 7cm]{esp_gdelt_themes_lines.png}};
-      \end{tikzpicture}
-   }
-   \only<+>{
-      \framesubtitle{How to construct a request?}
-      Human-firendly interface for testing the API is avaliable at:
-      \begin{center}
-         \textcolor{blue}{\href{https://gdelt.github.io}{https://gdelt.github.io}}
-      \end{center}
-   }
+   \frametitle{Bibliography}
+   \scriptsize
+   \begin{enumerate}
+      \item Conway, J. (1970). Conway's game of life. Scientific American.
+      \item Galán, J. M., Izquierdo, L. R., Izquierdo, S. S., Santos, J. I., Del
+      Olmo, R., \& López-Paredes, A. (2013). Checking Simulations: Detecting and
+      Avoiding Errors and Artefacts. In B. Edmonds \& R. Meyer (Eds.),
+      Simulating Social Complexity (pp. 95–116). Springer Berlin Heidelberg.
+      \item De Raad, W. E., Nowak, A., \& Borkowski, W. (2013). Modeling
+      Dynamics of Multicultural Integration and Conflict. In K. Sycara, M.
+      Gelfand, \& A. Abbe (Eds.), Models for Intercultural Collaboration and
+      Negotiation (Vol. 6, pp. 183–197). Springer Netherlands.
+      \item Epstein, J. M. (2008) "Why Model?" Journal of Artificial Societies and Social Simulation, 11(4), 12.
+      \item Goldstone, R. L., \& Janssen, M. A. (2005). Computational models of collective behavior. Trends in Cognitive Sciences, 9(9), 424-430.
+      \item Norman, D. A. (1983). Some observations on mental models. In D. Gentner \& A. L. Stevens (Eds), Mental models, pp . 7-14. Hillsdale, NJ: Erlbaum.
+      \item Schelling, T. C. (1971). DYNAMIC MODELS OF SEGREGATION. Journal of
+      Mathematical Psychology, 1, 143–186.
+      \item Timpone, R. J., \& Taber, C. S. (1996). Computational Modeling. London: SAGE.
+   \end{enumerate}
 \end{frame}
 
+\begin{frame}
+    \frametitle{For the next week}
+    \begin{enumerate}
+        \item Find a scientific article that uses computer simulations (Google Scholar). It should be published in a peer-reviewed social science journal and have at least 10 citations.
+        \item Read it.
+        \item Submit the title, authors, year of publication, journal, and maximum 200 words takeaway message in Google Classroom. It should consist of at least 4 sentences: problem statement, research question/hypothesis, what they did, main finding.
+        \item Deadline: \textbf{12th December 2025, 11:59 AM}.
+    \end{enumerate}
+\end{frame}
 
 \end{document}
