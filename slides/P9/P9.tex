@@ -82,7 +82,7 @@
 \setbeamercovered{transparent} 
 
 \title[]{Introduction to Computational Social Science}
-\subtitle{Computer simulation -- why simulate?}
+\subtitle{Computer simulation -- why simulate? -- discussion}
 \author[]{Mikołaj Biesaga\\ \small{\color{blue}{\href{mailto:m.biesaga@uw.edu.pl}{m.biesaga@uw.edu.pl}}}}
 \institute{\includegraphics[width = 4 cm]{uw.png}}
 \date{\today}
@@ -98,11 +98,6 @@
      \item \textbf{Research project proposal.} A short proposal for a research
      project using some of the methods we discussed in the class. Details are
      discussed in \textit{Structure of the proposal} section.
-     \item \textbf{Simple research project and report.} Simple data-driven
-     project in which you gather some data from an external web-based source
-     (i.e. from an API or through webscraping), process it and use it to answer
-     a simple research question. Details are discussed in \textit{Structure of
-     the project} section.
     \end{enumerate}
 \end{frame}
     
@@ -142,28 +137,6 @@
     \end{itemize}
 \end{frame}
     
-\begin{frame}{Structure of the project | general methods}
-    \begin{itemize}
-     \item The project should consist of two main items:
-     \begin{enumerate}
-     \item \textbf{Notebook} with code and description of the project.
-     More on that below.
-     \item File with the \textbf{raw data} as was extracted from the external
-     data source (e.g. API or webpage).
-     \end{enumerate}
-     \item The notebook should include a short introduction describing the
-     problem and why it is significant.
-     \item The specific research question should be introduced.
-     \item Data source should be discussed. In particular in relation to the
-     research question.
-     \item Data analysis methods should be discussed, also in relation to the
-     research question.
-     \item Code and text should be mixed in the notebook in a way that
-     facilitates understanding of the adopted research methods and obtained
-     results.
-    \end{itemize}
-\end{frame}
-    
 \section[Things to remember]{Things to remember}
 \begin{frame}{Things to remember}
     \begin{itemize}
@@ -186,19 +159,11 @@
         \frametitle{Formal requirements}
         \only<1>{
             \begin{itemize}
-            \item Regardless whether you chose a project or a proposal the
-            deadline for submitting it is on \textbf{XX.XX.2026 23:59:59}.
-            \item If you decide to submit a project please send us two files:
-            the notebook and the raw data file. Please, remember to rename them
-            properly FP\_<SURNAME>\_<NAME>.ipynb and FP\_<SURNAME>\_<NAME>.jl
-            (the data file might have the format of your choice, it doesn't have
-            to be a JSON line file).
-            \item If you decide to submit a proposal your work should not be
-            shorter than 3 pages and not longer than 5 (interline: single, font
-            size: 12). Please, remember to rename your file properly
-            FP\_<SURNAME>\_<NAME>.docx.
-            \item Regardless whether you will choose proposal or project you
-            must include at least one bibliography item.
+            \item The deadline for submitting the proposal is on \textbf{XX.XX.2026 23:59:59}.
+            \item Your work should not be shorter than 3 pages and not longer
+            than 5 (interline: single, font size: 12). Please, remember to
+            rename your file properly FP\_<SURNAME>\_<NAME>.docx.
+            \item You must include at least one bibliography item.
             \end{itemize}
         }
         \only<2>{
@@ -207,7 +172,13 @@
                 some time on formatting and checking spelling and grammar.
             \end{block}
         }
-    \end{frame}
+\end{frame}
+\begin{frame}
+    \frametitle{Additional resources}
+    \begin{itemize}
+        \item \href{https://libguides.usc.edu/writingguide/purpose}{\color{blue}{Organizing Your Social Sciences Research Paper}} by Dr. Robert V. Labaree from University of Southern California
+    \end{itemize}
+\end{frame}
 \part[Computer Simulations]{Computer Simulations}
 \frame{\partpage}
 \section[Agent-based models]{Agent-based models}
@@ -267,8 +238,8 @@
 \begin{frame}
    \frametitle{\large Modeling Dynamics of Multicultural Integration and Conflict}
    \framesubtitle{de Raad, Nowak, \& Borkowski, 2013}
-   \only<1,2>{
-      \only<1>{
+   \only<1,2,3,4, 5>{
+      \only<1,3>{
          \begin{itemize}
             \item Acculturation vs Segregation.
             \item A positive attitude means that contact with that person increases happiness, a negative attitude is related to a decrease.
@@ -278,10 +249,36 @@
          \end{itemize}
       }
       \only<2>{
+         \framesubtitle{Berry, 1980; 1997}
+         \begin{block}{Acculturation Strategy}
+         When individuals do not wish to maintain their cultural identity, but
+         prefer to maintain contacts with the other culture.
+          \end{block}
+         \begin{block}{Segregation Strategy}
+         If individuals prefer to hold on to their original culture and want to
+         avoid contact with the other group.
+         \end{block}
+      }
+      \only<4>{
          $$H = A_{own} \times \sqrt{N_{own}} + A_{other} \times \sqrt{N_{other}}$$
       }
+      \only<5>{
+         \centering
+         \begin{tikzpicture}
+            \draw[thick, ->] (-1, 0) -- (7, 0) node[right] {$x$};
+            \draw[thick, ->] (0, -1) -- (0, 5) node[left] {$y$};
+            \draw[domain=0:7, smooth, variable=\x, blue] plot (\x,{sqrt(\x)});
+            \foreach \x in {1,...,6}{
+               \draw [fill = blue] (\x,-.1) -- (\x, .1) node[below = .2cm] {\x};
+            };
+            \foreach \y in {1,...,4}{
+               \draw [fill = blue] (-.1, \y) -- (.1, \y) node[left = .2cm] {\y};
+            };
+            
+         \end{tikzpicture}
+      }
    }
-   \only<3>{
+   \only<6>{
       \begin{figure}
          \begin{minipage}{.39\textwidth}
             \includegraphics[width = \textwidth]{wouter1.png}
@@ -297,7 +294,7 @@
          attitudes.}
       \end{figure}
    }
-   \only<4>{
+   \only<7>{
       \begin{figure}
          \includegraphics[width = .8\textwidth]{wouter3.png}
          \caption{Pattern of intergroup contact between agents with equal and
@@ -306,7 +303,7 @@
          attitudes are 0.50.}
       \end{figure}
    }
-   \only<5>{
+   \only<8>{
       \begin{figure}
          \includegraphics[width = .8\textwidth]{wouter4.png}
          \caption{\textbf{Left panel:} A pattern of intergroup contact between
@@ -316,12 +313,23 @@
          of 0.00.}
       \end{figure}
    }
+\end{frame}
 
+\begin{frame}
+   \frametitle{Discussion}
+   \begin{enumerate}
+      \item Imagine you want to investigate how the opinions on climate
+      change? How would you approach it?
+      \item What are the possible pitfalls and risks of computer simulations?
+      \item What computer simulations can offer to psychologists?
+   \end{enumerate}
 \end{frame}
 \begin{frame}
    \frametitle{Bibliography}
    \scriptsize
    \begin{enumerate}
+      \item Berry, J. W. (1980). Acculturation as varieties of adaptation. In A. Padilla (Ed.), Acculturation: Theory, models and some new findings (pp. 9–25). Boulder, CO: Westview.
+      \item Berry, J. W. (1997). Immigration, acculturation and, adaptation. Applied Psychology: An International Review, 46, 5–68.
       \item Galán, J. M., Izquierdo, L. R., Izquierdo, S. S., Santos, J. I., Del
       Olmo, R., \& López-Paredes, A. (2013). Checking Simulations: Detecting and
       Avoiding Errors and Artefacts. In B. Edmonds \& R. Meyer (Eds.),
