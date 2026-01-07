@@ -1,0 +1,322 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{ulem}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{graphicx,threeparttable,caption}
+\usetikzlibrary{shapes,snakes}
+\usepackage[beamer,customcolors]{hf-tikz}
+\usepackage{nicematrix}
+\usepackage{xcolor}
+\usepackage{makecell}
+\usepackage{array}
+\usepackage{csquotes}
+\usepackage{csquotes}
+\usepackage{minted}
+\captionsetup{labelformat=empty,labelsep=none}
+
+\graphicspath{ {./png/} }
+
+\usetikzlibrary{
+    arrows,
+    arrows.meta,
+    shapes,
+    positioning,
+    shadows,
+    trees,
+    calc
+}
+
+\tikzset{%
+    >={Latex[width=2mm,length=2mm]},
+    % Specifications for style of nodes:
+    plain/.style = {},
+    base/.style = {
+        plain,
+        rectangle, rounded corners, draw=black,
+        minimum width=1cm, minimum height=1cm,
+        text centered, font=\sffamily\tiny\bfseries,
+        fill=white, align=center
+    },
+    app/.style = {base, ellipse},
+    data/.style = {base, fill=gray!30},
+    action/.style = {base, circle, fill=red!30},
+    note/.style = {app, fill=yellow},
+    hl/.style={
+    set fill color=red!80!black!40,
+    set border color=red!80!black
+    }
+}
+
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+\setbeamercolor{alerted text}{fg=red}
+%\usecolortheme[orchid]{structure}
+\usetheme[hideothersubsections]{PaloAlto}
+\makeatletter
+\patchcmd{\csq@bquote@i}{{#6}}{{\emph{#6}}}{}{}
+\makeatother
+%\usecolortheme{orchid}
+%\usefonttheme{professionalfonts}
+\newcommand{\soutthick}[1]{%
+   \textcolor{red}{
+   \renewcommand{\ULthickness}{1pt}%
+      \sout{#1}%
+   \renewcommand{\ULthickness}{.4pt}% Resetting to ulem default
+   }
+}
+\newcommand{\centered}[1]{\begin{tabular}{l} #1 \end{tabular}}
+\setbeamertemplate{section in toc}[square]
+\setbeamertemplate{subsection in toc}[square]
+\setbeamertemplate{section in sidebar}[shaded]
+\setbeamertemplate{items}[square]
+\setbeamercovered{transparent} 
+
+\title[]{Introduction to Computational Social Science}
+\subtitle{Networks -- how small is the world?}
+\author[]{Mikołaj Biesaga\\ \small{\color{blue}{\href{mailto:m.biesaga@uw.edu.pl}{m.biesaga@uw.edu.pl}}}}
+\institute{\includegraphics[width = 4 cm]{uw.png}}
+\date{\today}
+\begin{document}
+\begin{frame}
+   \titlepage
+\end{frame}
+
+\begin{frame}
+   \frametitle{Before we start}
+   \begin{figure}
+      \centering
+      \includegraphics[width = .5\textwidth]{network.png}
+      \caption{from \href{https://interactioninstitute.org/network-analysis-for-change-collaborations-clusters-champions-and-coach-weavers/}{\textcolor{blue}{Ogden, 2020}}}
+   \end{figure}
+
+\end{frame}
+
+\section[The small world problem]{The small world problem}
+\begin{frame}
+   \frametitle{The small world problem}
+   \framesubtitle{Milgram, 1967}
+   \only<1>{
+      There are two general philosophical views of the small world problem:
+      \begin{minipage}{.45\textwidth}
+         \begin{block}{}
+            \alert{Any two people in the world can be linked}, no matter how remote from each other, can be linked in terms of intermediate acquaintances, and that the number of such intermediate links is relatively small.
+         \end{block}
+      \end{minipage}
+      \begin{minipage}{.08\textwidth}
+         \hfill
+      \end{minipage}
+      \begin{minipage}{.45\textwidth}
+         \begin{block}{}
+            There are unbridgeable gaps between various groups and that therefore, \alert{given any two people in the world, they will never link up} becasue people have circles of acuaintances which do not necessarily intersect.
+         \end{block}
+      \end{minipage}
+   }
+   \only<2>{
+      \centering{
+         \includegraphics[width = .9\textwidth]{milgram.png}
+      }
+   }
+   \only<3>{
+      \begin{minipage}{.49\textwidth}
+         \includegraphics[width = \textwidth]{migram_graph.png}
+      \end{minipage}
+      \begin{minipage}{.49\textwidth}
+         \begin{itemize}
+            \item The median of intermediate persons was 5.
+            \item Participants were three times more likely to send the package to a person of the same sex as to someone of the different sex.
+         \end{itemize}
+         \centering
+         \includegraphics[width = .6\textwidth]{milgram_table.png}
+      \end{minipage}
+   }
+\end{frame}
+
+\begin{frame}
+   \only<1>{
+      \frametitle{Could it be a small world after all?}
+      \framesubtitle{Kleinfeld, 2002}
+      \begin{itemize}
+               \item Only \alert{small} percentage of packages reached the final destination (Kansas -- 5\%; Nebraska -- 30\%).
+               \item Not a representative sample -- the recruitment process favored sociable people.
+               \item Social class separation -- low-income senders were only able to reach low-income recipients.
+      \end{itemize}
+   }
+   \only<2>{
+      \frametitle{How small is the world, really?}
+      \framesubtitle{Watts, 2016}
+      \begin{itemize}
+         \item Facebook degrees of separation -- 4.57 (Edunov et al., 2016)
+         \item Algorithmic vs. topological approach to the small world problem (Watts, 2016)
+      \end{itemize}
+      \begin{minipage}{.45\textwidth}
+      \begin{block}{Topological approach}
+         The small world problem is a property of the network. The degree of 
+         separation refers to the underling structure of the network.
+      \end{block}
+      \end{minipage}
+      \begin{minipage}{.08\textwidth}
+         \hfill
+      \end{minipage}
+      \begin{minipage}{.45\textwidth}
+      \begin{block}{Algorithmic approach}
+         The small world problem is a property of the algorithm. The degree of separation refers to the ability to find the shortest path between two nodes.
+      \end{block}
+      \end{minipage}
+   }
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Six degrees of separation}
+   \centering
+   \includegraphics[width = .5\textwidth]{png/bacon.png}
+\end{frame}
+
+\section[Homophily]{Homophily}
+
+\begin{frame}
+   \frametitle{The small world network}
+   \only<1>{
+      \begin{figure}
+         \centering
+         \includegraphics[width = .5\textwidth]{network.png}
+         \caption{from \href{https://interactioninstitute.org/network-analysis-for-change-collaborations-clusters-champions-and-coach-weavers/}{\textcolor{blue}{Ogden, 2020}}}
+      \end{figure}
+   }
+   \only<2>{
+      \framesubtitle{Homophily}
+      \begin{block}{Homophily}
+         \underline{Homophily} is a concept in sociology describing the tendency of individuals to associate and bond with similar others, as in the proverb "birds of a feather flock together".
+      \end{block}
+   }
+   \only<3>{
+      \framesubtitle{Homophily}
+      \begin{figure}
+         \centering
+         \includegraphics[width = .7\textwidth]{homophily.png}
+         \caption{Lee et al. (2019)}
+      \end{figure}
+   }
+   \only<4>{
+      \framesubtitle{Lee et al. (2019)}
+      \begin{itemize}
+         \item When homophily is \alert{high}, both minority and majority groups
+         tend to \alert{overestimate} their own size, whereas when homophily is
+         \alert{low}, both groups tend to \alert{underestimate} their own size.
+         \item The \alert{smaller the size of the minority group}, the more
+         its size is \alert{overestimated} by both minority and majority groups.
+      \end{itemize}
+   }
+\end{frame}
+
+\section[Weak ties]{Weak ties}
+\begin{frame}
+   \frametitle{The power of weak ties}
+   \only<1>{
+      \framesubtitle{Granovetter, 1973}
+      \begin{figure}
+         \centering
+         \includegraphics[width = .5\textwidth]{network.png}
+         \caption{from \href{https://interactioninstitute.org/network-analysis-for-change-collaborations-clusters-champions-and-coach-weavers/}{\textcolor{blue}{Ogden, 2020}}}
+      \end{figure}
+   }
+   \only<2>{
+      \begin{block}{}
+         Granovetter (1973) identified weak ties as a key source of “diffusion of
+         influence and information, mobility opportunity, and community
+         organization.”
+      \end{block}
+   }
+   \only<3,5>{
+      \framesubtitle{Rajkumar et al., 2022}
+      \begin{itemize}
+         \item A five-year experiment involving LinkedIn’s “People You May Know”
+         (PYMK) algorithm, which suggests new connections to site users. 
+         \item A weak tie was defined two fold:
+         \begin{itemize}
+            \item message intensity
+            \item number of mutual friends
+         \end{itemize}
+         \item The experiment involved around \alert{20 million} LinkedIn users, who
+         over the five years ended up creating about \alert{2 billion new connections}
+         on the site, recorded over \alert{70 million job applications}, and wound up
+         accepting \alert{600,000 new jobs} identified through the site.
+      \end{itemize}
+
+   }
+   \only<4>{
+      \begin{figure}
+         \centering
+         \includegraphics[width = .8\textwidth]{weak_ties.png}
+         \caption{Rajkumar et al., 2022}
+      \end{figure}
+   }
+   \only<6>{
+      \begin{figure}
+         \begin{minipage}{.49\textwidth}
+            \includegraphics[width = \textwidth]{interaction_intensity.png}
+         \end{minipage}
+         \begin{minipage}{.49\textwidth}
+            \includegraphics[width = \textwidth]{number_friends.png}
+         \end{minipage}
+         \caption{Rajkumar et al., 2022}
+      \end{figure}
+
+   }
+\end{frame}
+
+%% \section[Migration Studies]{Migration Studies}
+%% \begin{frame}
+%%    \frametitle{Migration Studies -- network approach}
+%%    \framesubtitle{Massey et al., 1993}
+%%    \begin{block}{}
+%%       Migrant networks are sets of interpersonal ties that connect migrants,
+%%       former migrants, and nonmigrants in origin and destination areas through ties
+%%       of kinship, friendship, and shared community origin.
+%%    \end{block}
+%% \end{frame}
+
+\begin{frame}
+   \frametitle{Bibliography}
+   \footnotesize
+   \begin{enumerate}
+      \item Edunov, S., Bhagat, S., Burke, M., Diuk, C., \& Filiz, I. O., (2016). \href{https://research.facebook.com/blog/2016/2/three-and-a-half-degrees-of-separation/}{\textcolor{blue}{Three and a half degrees of separation}}
+      \item Granovetter, M. S. (1973). The Strength of Weak Ties. American
+      Journal of Sociology, 78(6), 1360–1380.
+      \item Kleinfeld, J. S. (2002). The small world problem. 39, 61–66.
+      \item Lee, E., Karimi, F., Wagner, C., Jo, H.-H., Strohmaier, M., \&
+      Galesic, M. (2019). Homophily and minority-group size explain perception
+      biases in social networks. Nature Human Behaviour, 3(10), 1078–1087.
+      \href{https://doi.org/10.1038/s41562-019-0677-4}{\textcolor{blue}{https://doi.org/10.1038/s41562-019-0677-4}}
+      %% \item Massey, D. S., Arango, J., Hugo, G., Kouaouci, A., Pellegrino, A.,
+      %% \& Taylor, J. E. (1993). Theories of International Migration: A Review and
+      %% Appraisal. Population and Development Review, 19(3), 431.
+      %% \href{https://doi.org/10.2307/2938462}{\textcolor{blue}{https://doi.org/10.2307/2938462}}
+      \item Milgram, S. (1967). The small-world problem. Psychology Today, 1(1), 61–67.
+      \item Rajkumar, K., Saint-Jacques, G., Bojinov, I., Brynjolfsson, E., \&
+      Aral, S. (2022). A causal test of the strength of weak ties. Science,
+      377(6612), 1304–1310. \href{https://doi.org/10.1126/science.abl4476}{\textcolor{blue}{https://doi.org/10.1126/science.abl4476}}
+      \item Watts, D. (2016). \href{https://medium.com/@duncanjwatts/how-small-is-the-world-really-736fa21808ba}{\textcolor{blue}{How small is the world, really?}}
+   \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{For the class next week}
+    \begin{enumerate}
+        \item Find a scientific article that uses the network approach (Google Scholar). It should be published in a peer-reviewed social science journal and have at least 10 citations.
+        \item Read it.
+        \item Submit the title, authors, year of publication, journal, and maximum 200 words takeaway message in Google Classroom. It should consist of at least 4 sentences: problem statement, research question/hypothesis, what they did, main finding.
+        \item Deadline: \textbf{16th January 2026, 11:59 AM}.
+    \end{enumerate}
+\end{frame}
+
+\end{document}
