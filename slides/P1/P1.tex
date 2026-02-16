@@ -70,17 +70,17 @@
         \end{center}
     }
     \only<2>{
-        \framesubtitle{Best Books this Year}
-        \begin{minipage}{.45\textwidth}
-            \begin{center}
-                \includegraphics[width = .7\textwidth]{safekeep.jpg}
-            \end{center}
-        \end{minipage}
-        \begin{minipage}{.45\textwidth}
-            \begin{center}
-                \includegraphics[width = .7\textwidth]{brotherlessnight.jpg}
-            \end{center}
-        \end{minipage}
+        \framesubtitle{Current Book}
+        \begin{center}
+            \includegraphics[width = .3\textwidth]{hamnet.png}
+        \end{center}
+
+    }
+    \only<3>{
+        \framesubtitle{Next Comics Book}
+        \begin{center}
+            \includegraphics[width = .35\textwidth]{Kobane_okl.jpg}
+        \end{center}
     }
 \end{frame}
 
@@ -172,15 +172,62 @@
 \section{CSS}
 
 \begin{frame}
+    \frametitle{Does BMI predict political corruption?}
+    \framesubtitle{Blavatskyy, 2021}
+    \only<1>{
+        \begin{figure}
+            \includegraphics[width = .7\textwidth]{png/corruption_bmi.jpg}
+            \caption{
+                \footnotesize
+                Scatterplot of median estimated ministers' body mass-index agains Transparency International Corruption perceptions Index 2017 (with linear trend), where lower values of CPI indicate greater corruption.
+            }
+        \end{figure}
+    }
+    \only<2>{
+        \begin{table}
+            \caption{
+                \footnotesize
+                Median estimated ministers' body-mass index and five conventional measures of corruption for 15 post-Soviet states.
+            }
+            \includegraphics[width = .7\textwidth]{png/corruption_bmi.png}
+        \end{table}
+    }
+\end{frame}
+
+\begin{frame}
     \frametitle{What is Computational Social Science?}
-    \begin{definition}{}
-        In the most general sense \emph{Computational Social Science} is a data-driven approach that uses computational methods in studying social phenomena.
-    \end{definition}
-    \begin{definition}{}
-        \emph{Data Science} on the other hand is a broader term than Computational Social Science. It describes the theory and practice of extracting knowledge and insight from data.
-    \end{definition}
-
-
+    \only<1>{
+        \begin{minipage}{.45\textwidth}
+            \begin{block}{Data Science}
+                It describes the theory and practice of extracting knowledge and insights from data.
+            \end{block}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{.45\textwidth}
+            \begin{block}{Computational Social Science}
+                It is a data-driven approach that uses computational methods in studying social phenomena.
+            \end{block}
+        \end{minipage}
+    }
+    \only<2,3>{
+        \centering
+        \begin{tikzpicture}
+            \node at (0,0) {\includegraphics[width = 2cm]{png/observation.png}};
+            \node at (0,-2) {\textsc{Observation}};
+            \node at (3,0) {\includegraphics[width = 2cm]{png/theory_formulation.png}};
+            \node at (3,-2) {\textsc{Theory}};
+            \node at (6,0) {\includegraphics[width = 2cm]{png/modeling.png}};
+            \node at (6,-2) {\textsc{Model}};
+            \only<2>{
+                \draw[white] (9,0) circle (1.4cm);
+            }
+            \only<3>{
+                \draw[orange, dashed] (9,0) circle (1.4cm);
+            }
+            \node at (9,0) {\includegraphics[width = 2cm]{png/questionnaire.png}};
+            \node at (9,-2) {\textsc{Research}};
+        \end{tikzpicture}
+    }
 \end{frame}
 
 \begin{frame}
