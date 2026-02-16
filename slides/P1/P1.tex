@@ -50,6 +50,7 @@
 \setbeamertemplate{secion in sidebar}[shaded]
 \setbeamertemplate{items}[square]
 \setbeamercovered{transparent} 
+\setbeamercolor{alerted text}{fg=red!75!black}
 
 \title[]{Introduction to Computational Social Science}
 \subtitle{Introduction}
@@ -164,7 +165,7 @@
     \end{itemize}
     \only<2>{
         \begin{tikzpicture}[overlay]
-            \node[anchor = base, text=red, text width = 13cm, align = center] at ([xshift=-1cm,yshift=-3cm]current page.center){\LARGE This is not a Computer Science Class!};
+            \node[anchor = base, text=red!75!black, text width = 13cm, align = center] at ([xshift=-1cm,yshift=-3cm]current page.center){\LARGE This is not a Computer Science Class!};
         \end{tikzpicture}
     }
 \end{frame}
@@ -197,12 +198,14 @@
 \begin{frame}
     \frametitle{What is Computational Social Science?}
     \only<1>{
+        \setbeamercolor{block title}{bg=red!75!black}%bg=background, fg= foreground
         \begin{minipage}{.45\textwidth}
             \begin{block}{Data Science}
                 It describes the theory and practice of extracting knowledge and insights from data.
             \end{block}
         \end{minipage}
         \hfill
+        \setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!75!black}
         \begin{minipage}{.45\textwidth}
             \begin{block}{Computational Social Science}
                 It is a data-driven approach that uses computational methods in studying social phenomena.
@@ -222,7 +225,7 @@
                 \draw[white] (9,0) circle (1.4cm);
             }
             \only<3>{
-                \draw[orange, dashed] (9,0) circle (1.4cm);
+                \draw[red!75!black, dashed] (9,0) circle (1.4cm);
             }
             \node at (9,0) {\includegraphics[width = 2cm]{png/questionnaire.png}};
             \node at (9,-2) {\textsc{Research}};
@@ -324,7 +327,8 @@
             \item<4> goverment data
             \item <4>...
         \end{itemize}
-        \action<4>{\alert{The fact that you can get the data does not mean you should.}}
+        \centering
+        \action<4>{\alert{The fact that you can get the data does not mean you should!}}
     }
 \end{frame}
 
