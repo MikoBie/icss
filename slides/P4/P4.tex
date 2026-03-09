@@ -220,27 +220,6 @@
 
 \section{Examples}
 \begin{frame}
-    \frametitle{Reddit}
-    \only<+>{
-        \begin{figure}
-            \centering
-            \includegraphics[width = .3\textwidth]{reddit_log.png}
-        \end{figure}
-    }
-    \only<+>{
-        \begin{figure}
-            \centering
-            \includegraphics[width = \textwidth]{hicss.png}
-        \end{figure}
-    }
-    \only<+>{
-        \framesubtitle{(Roszczyńska-Kurasińska et al., 2025)}
-        \begin{figure}
-            \centering
-            \includegraphics[width = .7\textwidth]{hicss-figure.png}
-        \end{figure}
-
-    }
     \frametitle{Wikipedia}
     \only<+>{
         \begin{figure}
@@ -251,93 +230,144 @@
     \only<+>{
         \begin{figure}
             \centering
-            \includegraphics[width = \textwidth]{wiki1.png}
+            \includegraphics[width = \textwidth]{wiki2.png}
         \end{figure}
     }
     \only<+>{
-        \framesubtitle{(Wagner et al., 2015)}
-        \begin{itemize}
-            \item \textbf{Coverage bias} determines differences between the
-            number of notable women and men portrayed on Wikipedia.             
-            \item \textbf{Visibility bias} reflects how many articles about men
-            or women make it to the front page of Wikipedia.        
-            \item \textbf{Structural bias} quantifies gender homophily/disassortativity,
-            i.e. gender-specific tendencies to preferably link articles of
-            notable people with the same or different gender. 
-            \item \textbf{Lexical bias} reveals inequalities in the words used
-            to describe notable men and women on Wikipedia.
-        \end{itemize}
+        \framesubtitle{(Ruprechter et al., 2020)}
+        \begin{figure}
+            \centering
+            \includegraphics[width = .8\textwidth]{wikipedia_chart.png}
+        \end{figure}
     }
     \only<+>{
-        \framesubtitle{(Wagner et al., 2015)}
-        \begin{itemize}
-            \item \textbf{Coverage bias:} Men and women are covered equally well
-            in all six Wikipedia language editions. 
-            \item \textbf{Visibility bias:} No evidence for male-bias in the
-            selection procedure of articles that are featured on the startpage
-            of the English Wikipedia.
-            \item \textbf{Structural bias:} Women on Wikipedia tend
-            to be more linked to men than vice versa. 
-            \item \textbf{Lexical bias:} Romantic relationships and
-            family-related issues are much more frequently discussed on
-            Wikipedia articles about women than men.
-        \end{itemize}
+       Wikipedia API (for English Wikipedia) lives at this URL:
+       \begin{center}
+          \href{https://en.wikipedia.org/w/api.php}{\color{blue}{https://en.wikipedia.org/w/api.php}}
+       \end{center}
     }
+%%     \only<+>{
+%%         \begin{figure}
+%%             \centering
+%%             \includegraphics[width = \textwidth]{wiki1.png}
+%%         \end{figure}
+%%     }
+%%     \only<+>{
+%%         \framesubtitle{(Wagner et al., 2015)}
+%%         \begin{itemize}
+%%             \item \textbf{Coverage bias} determines differences between the
+%%             number of notable women and men portrayed on Wikipedia.             
+%%             \item \textbf{Visibility bias} reflects how many articles about men
+%%             or women make it to the front page of Wikipedia.        
+%%             \item \textbf{Structural bias} quantifies gender homophily/disassortativity,
+%%             i.e. gender-specific tendencies to preferably link articles of
+%%             notable people with the same or different gender. 
+%%             \item \textbf{Lexical bias} reveals inequalities in the words used
+%%             to describe notable men and women on Wikipedia.
+%%         \end{itemize}
+%%     }
+%%     \only<+>{
+%%         \framesubtitle{(Wagner et al., 2015)}
+%%         \begin{itemize}
+%%             \item \textbf{Coverage bias:} Men and women are covered equally well
+%%             in all six Wikipedia language editions. 
+%%             \item \textbf{Visibility bias:} No evidence for male-bias in the
+%%             selection procedure of articles that are featured on the startpage
+%%             of the English Wikipedia.
+%%             \item \textbf{Structural bias:} Women on Wikipedia tend
+%%             to be more linked to men than vice versa. 
+%%             \item \textbf{Lexical bias:} Romantic relationships and
+%%             family-related issues are much more frequently discussed on
+%%             Wikipedia articles about women than men.
+%%         \end{itemize}
+%%     }
+%%     \only<+>{
+%%         \frametitle{Reddit}
+%%         \begin{figure}
+%%             \centering
+%%             \includegraphics[width = .3\textwidth]{reddit_log.png}
+%%         \end{figure}
+%%     }
+%%     \only<+>{
+%%         \frametitle{Reddit}
+%%         \begin{figure}
+%%             \centering
+%%             \includegraphics[width = \textwidth]{hicss.png}
+%%         \end{figure}
+%%     }
+%%     \only<+>{
+%%         \frametitle{Reddit}
+%%         \framesubtitle{(Roszczyńska-Kurasińska et al., 2025)}
+%%         \begin{figure}
+%%             \centering
+%%             \includegraphics[width = .7\textwidth]{hicss-figure.png}
+%%         \end{figure}
+%% 
+%%     }
 \end{frame}
 
 \begin{frame}
-    \frametitle{HEART project}
-    \only<1,2,3>{
-        \framesubtitle{Study design}
-        \begin{tikzpicture}
-            \node [text width = 4cm] at (-5,0) {\includegraphics[width = \textwidth]{survey.png}};
-            \node at (-5,-2) {\footnotesize\textsc{Before Survey}};
-            \node<2-> [text width = 4cm] at (0,0) {\includegraphics[width = \textwidth]{regular_visits.png}};
-            \node<2-> at (0,-2) {\footnotesize\textsc{Regular Visits}};
-            \node<3> [text width = 4cm] at (5,0) {\includegraphics[width = \textwidth]{survey.png}};
-            \node<3> at (5,-2) {\footnotesize\textsc{After Survey}};
-
-        \end{tikzpicture}
-    }
-    \only<4>{
-        \framesubtitle{Expected workflow}
+    \frametitle{Measuring migration 2.0}
+    \framesubtitle{Tjaden, 2021}
+    \begin{figure}
         \centering
-        \begin{tikzpicture}
-            \node [text width = 1cm] at (0,0) {\includegraphics[width = \textwidth]{questionnaire.png}};
-            \node at (0,-1) {\footnotesize\textsc{Survey}};
-            \node [text width = 1cm] at (2,0) {\includegraphics[width = \textwidth]{database.png}};
-            \node at (2,-1) {\footnotesize \textsc{DataBase}};
-            \node [text width = 1cm] at (4,0) {\includegraphics[width = \textwidth]{spreadsheet.png}};
-            \node at (4, -1) {\footnotesize \textsc{Spreadsheet}};
-            \node [text width = 1cm] at (6,0) {\includegraphics[width = \textwidth]{analysis.png}};
-            \node at (6,-1) {\footnotesize \textsc{Analysis}};
-            \draw [->, -stealth, thick] (.7,0) -- (1.3,0);
-            \draw [->, -stealth, thick] (2.7,0) -- (3.3,0);
-            \draw [->, -stealth, thick] (4.7,0) -- (5.3,0);
-        \end{tikzpicture}
-    }
-    \only<5,6>{
-        \framesubtitle{Actual workflow}
-        \centering
-        \begin{tikzpicture}
-            \node [text width = 1cm] at (0,0) {\includegraphics[width = \textwidth]{questionnaire.png}};
-            \node at (0,-1) {\footnotesize\textsc{Survey}};
-            \node [text width = 1cm] at (2.5,0) {\includegraphics[width = \textwidth]{database.png}};
-            \node at (2.5,-1) {\footnotesize \textsc{DataBase}};
-            \node [text width = 1cm] at (5,0) {\includegraphics[width = \textwidth]{cleaning.png}};
-            \node at (5,-1) {\footnotesize \textsc{Preprocessing}};
-            \node [text width = 1cm] at (7.5,0) {\includegraphics[width = \textwidth]{spreadsheet.png}};
-            \node at (7.5, -1) {\footnotesize \textsc{Spreadsheet}};
-            \node [text width = 1cm] at (10,0) {\includegraphics[width = \textwidth]{analysis.png}};
-            \node at (10,-1) {\footnotesize \textsc{Analysis}};
-            \draw [->, -stealth, thick] (.7,0) -- (1.8,0);
-            \draw [->, -stealth, thick] (3.2,0) -- node [above] {API} (4.3,0);
-            \draw [->, -stealth, thick] (5.7,0) -- (6.8,0);
-            \draw [->, -stealth, thick] (8.2,0) -- (9.3,0);
-            \draw<6> [color = orange] (5,0) circle (.8cm);
-        \end{tikzpicture}
-    }
+        \includegraphics[width = \textwidth]{table.png}
+    \end{figure}
 \end{frame}
+
+%% \begin{frame}
+%%     \frametitle{HEART project}
+%%     \only<1,2,3>{
+%%         \framesubtitle{Study design}
+%%         \begin{tikzpicture}
+%%             \node [text width = 4cm] at (-5,0) {\includegraphics[width = \textwidth]{survey.png}};
+%%             \node at (-5,-2) {\footnotesize\textsc{Before Survey}};
+%%             \node<2-> [text width = 4cm] at (0,0) {\includegraphics[width = \textwidth]{regular_visits.png}};
+%%             \node<2-> at (0,-2) {\footnotesize\textsc{Regular Visits}};
+%%             \node<3> [text width = 4cm] at (5,0) {\includegraphics[width = \textwidth]{survey.png}};
+%%             \node<3> at (5,-2) {\footnotesize\textsc{After Survey}};
+%% 
+%%         \end{tikzpicture}
+%%     }
+%%     \only<4>{
+%%         \framesubtitle{Expected workflow}
+%%         \centering
+%%         \begin{tikzpicture}
+%%             \node [text width = 1cm] at (0,0) {\includegraphics[width = \textwidth]{questionnaire.png}};
+%%             \node at (0,-1) {\footnotesize\textsc{Survey}};
+%%             \node [text width = 1cm] at (2,0) {\includegraphics[width = \textwidth]{database.png}};
+%%             \node at (2,-1) {\footnotesize \textsc{DataBase}};
+%%             \node [text width = 1cm] at (4,0) {\includegraphics[width = \textwidth]{spreadsheet.png}};
+%%             \node at (4, -1) {\footnotesize \textsc{Spreadsheet}};
+%%             \node [text width = 1cm] at (6,0) {\includegraphics[width = \textwidth]{analysis.png}};
+%%             \node at (6,-1) {\footnotesize \textsc{Analysis}};
+%%             \draw [->, -stealth, thick] (.7,0) -- (1.3,0);
+%%             \draw [->, -stealth, thick] (2.7,0) -- (3.3,0);
+%%             \draw [->, -stealth, thick] (4.7,0) -- (5.3,0);
+%%         \end{tikzpicture}
+%%     }
+%%     \only<5,6>{
+%%         \framesubtitle{Actual workflow}
+%%         \centering
+%%         \begin{tikzpicture}
+%%             \node [text width = 1cm] at (0,0) {\includegraphics[width = \textwidth]{questionnaire.png}};
+%%             \node at (0,-1) {\footnotesize\textsc{Survey}};
+%%             \node [text width = 1cm] at (2.5,0) {\includegraphics[width = \textwidth]{database.png}};
+%%             \node at (2.5,-1) {\footnotesize \textsc{DataBase}};
+%%             \node [text width = 1cm] at (5,0) {\includegraphics[width = \textwidth]{cleaning.png}};
+%%             \node at (5,-1) {\footnotesize \textsc{Preprocessing}};
+%%             \node [text width = 1cm] at (7.5,0) {\includegraphics[width = \textwidth]{spreadsheet.png}};
+%%             \node at (7.5, -1) {\footnotesize \textsc{Spreadsheet}};
+%%             \node [text width = 1cm] at (10,0) {\includegraphics[width = \textwidth]{analysis.png}};
+%%             \node at (10,-1) {\footnotesize \textsc{Analysis}};
+%%             \draw [->, -stealth, thick] (.7,0) -- (1.8,0);
+%%             \draw [->, -stealth, thick] (3.2,0) -- node [above] {API} (4.3,0);
+%%             \draw [->, -stealth, thick] (5.7,0) -- (6.8,0);
+%%             \draw [->, -stealth, thick] (8.2,0) -- (9.3,0);
+%%             \draw<6> [color = orange] (5,0) circle (.8cm);
+%%         \end{tikzpicture}
+%%     }
+%% \end{frame}
 
 \begin{frame}
     \frametitle{For the next week}
@@ -345,7 +375,7 @@
         \item Find a scientific article that collects data either through API or webscrapping (Google Scholar). It should be published in a peer-reviewed social science journal and have at least 10 citations.
         \item Read it.
         \item Submit the title, authors, year of publication, journal, and maximum 200 words takeaway message in Google Classroom. It should consist of at least 4 sentences: problem statement, research question/hypothesis, what they did, main finding.
-        \item Deadline: \textbf{14th November 2025, 11:59 AM}.
+        \item Deadline: \textbf{16th March 2026, 2:59 PM}.
     \end{enumerate}
 \end{frame}
 
@@ -353,8 +383,10 @@
     \frametitle{Bibliography}
     \tiny
     \begin{enumerate}
-        \item Roszczyńska-Kurasińska, M., Biesaga, M., \& de Oliveira, C. A. (2025). A Comparative Analysis of Reddit Discussions on Meat Reduction in Portugal, Poland, and the United Kingdom. Proceedings of the 58th Hawaii International Conference on System Sciences, 2532-2541, \href{https://scholarspace.manoa.hawaii.edu/server/api/core/bitstreams/b993f26e-72d7-4275-9ca6-09502be6ced8/content}{\textcolor{blue}{https://scholarspace.manoa.hawaii.edu/server/api/core/bitstreams/b993f26e-72d7-4275-9ca6-09502be6ced8/content}}.
-        \item Wagner, C., Garcia, D., Jadidi, M., \& Strohmaier, M. (2015). It’s a Man’s Wikipedia? Assessing Gender Inequality in an Online Encyclopedia. Proceedings of the ninth International AAAI Conference of Web and Social Media, 9, 454–463. \href{https://ojs.aaai.org/index.php/ICWSM/article/view/14628}{\textcolor{blue}{https://ojs.aaai.org/index.php/ICWSM/article/view/14628}}
+        \item Rajkumar, K., Saint-Jacques, G., Bojinov, I., Brynjolfsson, E., \& Aral, S. (2022). A causal test of the strength of weak ties. Science, 377(6612), 1304–1310. \href{https://doi.org/10.1126/science.abl4476}{\textcolor{blue}{https://doi.org/10.1126/science.abl4476}}
+        %% \item Roszczyńska-Kurasińska, M., Biesaga, M., \& de Oliveira, C. A. (2025). A Comparative Analysis of Reddit Discussions on Meat Reduction in Portugal, Poland, and the United Kingdom. Proceedings of the 58th Hawaii International Conference on System Sciences, 2532-2541, \href{https://scholarspace.manoa.hawaii.edu/server/api/core/bitstreams/b993f26e-72d7-4275-9ca6-09502be6ced8/content}{\textcolor{blue}{https://scholarspace.manoa.hawaii.edu/server/api/core/bitstreams/b993f26e-72d7-4275-9ca6-09502be6ced8/content}}.
+        \item Tjaden, J. (2021). Measuring migration 2.0: A review of digital data sources. Comparative Migration Studies, 9(1), 59. \href{https://doi.org/10.1186/s40878-021-00273-x}{\textcolor{blue}{https://doi.org/10.1186/s40878-021-00273-x}}
+        %% \item Wagner, C., Garcia, D., Jadidi, M., \& Strohmaier, M. (2015). It’s a Man’s Wikipedia? Assessing Gender Inequality in an Online Encyclopedia. Proceedings of the ninth International AAAI Conference of Web and Social Media, 9, 454–463. \href{https://ojs.aaai.org/index.php/ICWSM/article/view/14628}{\textcolor{blue}{https://ojs.aaai.org/index.php/ICWSM/article/view/14628}}
     \end{enumerate}
     
 \end{frame}
