@@ -94,14 +94,104 @@
    \titlepage
 \end{frame}
 
+\part[Projects]{Projects}
+\frame{\partpage}
+\begin{frame}{Possible forms of the project}
+    \begin{enumerate}
+     \item \textbf{Research project proposal.} A short proposal for a research
+     project using some of the methods we discussed in the class. Details are
+     discussed in \textit{Structure of the proposal} section.
+    \end{enumerate}
+\end{frame}
+    
+\section[Structure of the project]{Structure of the project}
+\begin{frame}{Structure of the proposal | general information}
+    \begin{itemize}
+     \item \textbf{Introduction and problem statement.} This section should
+     explain what is the project about in general and why the given problem
+     matters. The significance of the problem may be justified both in terms of
+     its theoretical/scientific or societal/business relevance.
+     \item \textbf{Research question.} What is the specific research question
+     you will try to answer in the project? It can be either formulated as a
+     strict hypothesis or as an exploratory question (i.e. not assuming any
+     particular effect or mechanism).
+     \item \textbf{Research methods.} This section should discuss, at a general
+     level, what data do you plan to use and how will analyze it. In particular,
+     you should clearly explain why the data and methods you chose will allow
+     you to answer your research question.
+    \end{itemize}
+\end{frame}
+    
+\begin{frame}{Structure of the proposal | research methods}
+    \begin{itemize}
+     \item \textbf{Data collection.} What is the data you are planning to use?
+     Where is it stored and how do you plan to obtain/extract it?  Are there any
+     possible obstacles and if there are what can be done to minimize the risk
+     of failure?
+     \item \textbf{Data preprocessing and storage.} How will you preprocess data
+     and in what format will store it for later use? For instance, when scraping
+     you may decide to data gathered from every individual website to a JSON
+     object and store all data in \texttt{.jsonl} file (JSON lines).
+     \item \textbf{Analytic methods.} What analytic methods will you apply to
+     your data in order to answer your question? This may include some methods
+     that we discussed in the class (i.e. sentiment analysis or some other
+     natural language processing methods), but you should also use your general
+     statistical knowledge to decide how you want to model your final data.
+    \end{itemize}
+\end{frame}
+    
+\section[Things to remember]{Things to remember}
+\begin{frame}{Things to remember}
+    \begin{itemize}
+     \item Make sure you will be able to gather data legally.  For instance, if
+     you want to scrape some websites you should try to determine whether they
+     allow scraping. You can check this by looking at the so-called
+     \texttt{robots.txt} of a website.  It can be found at
+     \texttt{<url>/robots.txt}. For instance, you can see Facebook configuration
+     at \texttt{facebook.com/robots.txt}.
+     \item Be kind for your data source. If there is a platform that exposes an
+     API you should use it instead of scraping data directly from its webpage.
+     \item Think about proper format for storing data. If you plan to use your
+     data to compute a statistical model in SPSS may be JSON lines are not the
+     best and you should consider storing your data as a simple CSV file?
+    \end{itemize}
+\end{frame}
+    
+\section[Formal requirements]{Formal requirements}
+\begin{frame}
+        \frametitle{Formal requirements}
+        \only<1>{
+            \begin{itemize}
+            \item The deadline for submitting the proposal is on \textbf{XX.XX.2026 23:59:59}.
+            \item Your work should not be shorter than 3 pages and not longer
+            than 5 (interline: single, font size: 12). Please, remember to
+            rename your file properly FP\_<SURNAME>\_<NAME>.docx.
+            \item You must include at least one bibliography item.
+            \end{itemize}
+        }
+        \only<2>{
+            \begin{block}{}
+                Last but not least, it must look aesthetically. Please, spend
+                some time on formatting and checking spelling and grammar.
+            \end{block}
+        }
+\end{frame}
+\begin{frame}
+    \frametitle{Additional resources}
+    \begin{itemize}
+        \item \href{https://libguides.usc.edu/writingguide/purpose}{\color{blue}{Organizing Your Social Sciences Research Paper}} by Dr. Robert V. Labaree from University of Southern California
+    \end{itemize}
+\end{frame}
+
+\part[NLP]{Natural Language Processing}
 \section{NODES}
 
 \begin{frame}
    \frametitle{Narratives}
    \begin{itemize}
-      \item<1-> Humans are "storytelling animals" (Gottschall, 2012). People are not computers. We think not with data, but with stories (Robinson \& Hawpe, 1986).
-      \item<2-> The Psychology of Life Stories (McAdams, 2001).
-      \item<3-> Whenever we find ourselves in a new situation or face a decision, we use narratives to understand the circumstances and compare potential scenarios (Beach, 2021). Stories are thus the primary tool by which we experience the world. They provide meaning to reality (Popova, 2015). 
+      \item<1-> People are "storytelling animals" (Gottschall, 2012). They are not computers and they think with stories not with data (Robinson \& Hawpe, 1986).
+      \item<2-> People create subjectively consistent story in which they are the main hero (McAdams, 2001).
+      \item<3-> Whenever they find themselves in a new situation or face a decision, people use narratives to understand the circumstances and compare potential scenarios (Beach, 2021). Thus, stories the primary tool by which we experience the world. They provide meaning to reality (Popova, 2015). 
       \item<4-> Many studies suggest that fake news tends to generate more attention and spread faster than true information. One of the reasons for that may be that they represent attractive narrative structures (Baptista \& Gradim, 2020). \alert{Fake news is perceived as more interesting and more relevant.}
    \end{itemize}
 \end{frame}
@@ -112,14 +202,14 @@
       Narratives tell us:
       \begin{enumerate}
          \item What is this? 
-         \item How is the situation changing, and what should we do about it?
-         \item Who am I in this situation with? 
+         \item How is the situation changing?
+         \item Who are the actors? 
       \end{enumerate}
       Thus, narratives perform 3 main functions:
       \begin{enumerate}
-         \item Organising our perception
-         \item Guiding our actions
-         \item Synchronising collective efforts
+         \item Organize our perception;
+         \item Guide our actions;
+         \item Synchronize collective efforts.
       \end{enumerate}
    }
    \only<2>{
@@ -229,11 +319,10 @@
 \begin{frame}
    \frametitle{Discussion}
    \begin{enumerate}
-      \item Imagine you want to investigate what the opinions are on climate
-      change? How would you approach it? What sources would you use?
+      \item Imagine you want to investigate what the opinions are on migration? How would you approach it? What sources would you use?
       \item What are the possible pitfalls and risks of NLP tools?
       \item What topic modeling, sentiment analysis, automatic classification
-      can offer to psychologists?
+      can offer to social scientists?
    \end{enumerate}
 \end{frame}
 \end{document}
