@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
 \usepackage{ulem}
 \usepackage{tikz}
 \usepackage{booktabs}
@@ -209,14 +209,13 @@
    \only<4>{
       \framesubtitle{Weisser, 2022}
       \begin{figure}
-         \includegraphics[width = \textwidth]{weisser_1.png}
+         \includegraphics[width = .7\textwidth]{weisser_1.png}
       \end{figure}
    }
    \only<5>{
       \begin{figure}
          \framesubtitle{Weisser, 2022}
-         \includegraphics[width = \textwidth]{weisser_2.png}
-         \caption{Weisser, 2022}
+         \includegraphics[width = .7\textwidth]{weisser_2.png}
       \end{figure}
    }
 
@@ -268,13 +267,13 @@
       \framesubtitle{How to construct a request?}
       \begin{tikzpicture}
           \node at (0,0) {\includegraphics[width = 7cm]{pl_gdelt_themes_lines.png}};
-          \node at (3.5,-3.75) {\includegraphics[width = 7cm]{esp_gdelt_themes_lines.png}};
+          \node at (6.5,-2.75) {\includegraphics[width = 7cm]{esp_gdelt_themes_lines.png}};
       \end{tikzpicture}
    }
    \only<+>{
       \framesubtitle{How to construct a request?}
-      Human-firendly interface for testing the API is avaliable at:
       \begin{center}
+         Human-firendly interface for testing the API is avaliable at:\\
          \textcolor{blue}{\href{https://gdelt.github.io}{https://gdelt.github.io}}
       \end{center}
    }
