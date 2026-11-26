@@ -216,7 +216,73 @@
    }
 \end{frame}
 
+
+
 \section[Models of segregation]{Models of segregation}
+
+\begin{frame}
+   \frametitle{Exercise}
+   \begin{columns}
+   \begin{column}{0.39\textwidth}
+      \begin{enumerate}
+         \item Draw a row of the following symbols.
+         \item Mark the unhappy symbols in red -- those surrounded by more individuals of different types than of their own type.
+         \item An unhappy symbol moves to a random empty location.
+      \end{enumerate}
+
+   \end{column}
+   \begin{column}{0.59\textwidth}
+      \begin{tikzpicture}
+         \foreach \x in {0,.5,...,8} {
+            \pgfmathparse{\x == 1 || \x == 3 || \x == 3.5 || \x == 4.5 || \x == 6 || \x == 6.5 || \x == 7 || \x == 7.5 ? 1 : 0}
+            \ifnum \pgfmathresult=1 {
+               \draw (\x, 0) circle (0.1);
+            } \else {
+               \pgfmathparse{\x != 0 && \x != 8 ? 1 : 0}
+               \ifnum \pgfmathresult=1{
+                  \draw (0+\x - .1, -.1) rectangle (0 + \x + 0.1, +0.1);
+               } \fi
+            } \fi
+         }
+
+         \foreach \x in {0,.5,...,8} {
+            \pgfmathparse{\x == 1 || \x == 3 || \x == 3.5 || \x == 4.5 || \x == 6 || \x == 6.5 || \x == 7 || \x == 7.5 ? 1 : 0}
+            \ifnum \pgfmathresult=1 {
+               \draw (\x, -2) circle (0.1);
+            } \else {
+               \pgfmathparse{\x != 0 && \x != 8 ? 1 : 0}
+               \ifnum \pgfmathresult=1{
+                  \draw (0+\x - .1, -1.9) rectangle (0 + \x + 0.1, -2.1);
+               } \fi
+            } \fi
+
+            \pgfmathparse{\x == 1 || \x == 3 || \x == 4 || \x == 4.5 || \x == 5.5 ? 1 : 0}
+            \ifnum \pgfmathresult=1 {
+               \draw[fill = red] (\x, -1.75) circle (.05);
+            } \else {
+               \pgfmathparse{\x != 0 && \x != 8 ? 1 : 0}
+               \ifnum \pgfmathresult=1{
+                  \draw[fill=green] (\x, -1.75) circle (.05);
+               } \else {
+                  \draw (\x, -1.75) circle (.05);
+               }\fi
+            } \fi
+         }
+
+      \end{tikzpicture}
+
+   \end{column}
+   \end{columns}
+\end{frame}
+
+\begin{frame}
+   \frametitle{Exercise}
+   \begin{figure}
+      \includegraphics[width = .7\textwidth]{few_moments.jpg}
+   \end{figure}
+
+\end{frame}
+
 \begin{frame}
    \frametitle{Dynamic models of segregation}
    \framesubtitle{Schelling, 1971}
