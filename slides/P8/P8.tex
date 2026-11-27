@@ -169,54 +169,70 @@
    \end{enumerate}
 \end{frame}
 
-\section[Agent-based models]{Agent-based models}
+%% \section[Agent-based models]{Agent-based models}
+%% \begin{frame}
+%%    \frametitle{Agent-based models}
+%%    \only<1>{
+%%       \begin{figure}
+%%          \centering
+%%          \includegraphics[width = .4\textwidth]{agent_based_models.png}
+%%          \caption{Galan et al., 2013}
+%%       \end{figure}
+%%    }
+%%    \only<2>{
+%%       \begin{block}{Agent-based models}
+%%          Agent-based models are discrete-time computer simulations used to study
+%%          the interactions between people, things, places, and time. They are
+%%          stochastic models built from the bottom up meaning individual agents
+%%          (often people in epidemiology) are assigned certain attributes.
+%%          \alert{The agents are programmed to behave and interact with other
+%%          agents and the environment in certain ways.} These interactions produce
+%%          emergent effects that may differ from effects of individual agents.
+%%       \end{block}
+%%    }
+%%    \only<3>{
+%%       \frametitle{Cellular automata}
+%%       \begin{figure}
+%%          \centering
+%%          \includegraphics[width = .8\textwidth]{grid.png}
+%%       \end{figure}
+%%    }
+%%    \only<4>{
+%%       \frametitle{Cellular automata}
+%%       \framesubtitle{Game of life (Conway, 1970)}
+%%       \begin{figure}
+%%          \includegraphics[width = .8\textwidth]{life.png}
+%%       \end{figure}
+%% 
+%%    }
+%%    \only<5>{
+%%       \frametitle{Cellular automata}
+%%       \framesubtitle{Game of life (Conway, 1970)}
+%%       \begin{figure}
+%%          \animategraphics[loop,controls, width = .8\textwidth]{10}{game_life-}{0}{148}
+%%          \caption{from \href{https://playgameoflife.com}{\textcolor{blue}{https://playgameoflife.com}}}
+%%       \end{figure}
+%% 
+%%    }
+%% \end{frame}
+
 \begin{frame}
-   \frametitle{Agent-based models}
-   \only<1>{
-      \begin{figure}
-         \centering
-         \includegraphics[width = .4\textwidth]{agent_based_models.png}
-         \caption{Galan et al., 2013}
-      \end{figure}
-   }
-   \only<2>{
-      \begin{block}{Agent-based models}
-         Agent-based models are discrete-time computer simulations used to study
-         the interactions between people, things, places, and time. They are
-         stochastic models built from the bottom up meaning individual agents
-         (often people in epidemiology) are assigned certain attributes.
-         \alert{The agents are programmed to behave and interact with other
-         agents and the environment in certain ways.} These interactions produce
-         emergent effects that may differ from effects of individual agents.
-      \end{block}
-   }
-   \only<3>{
-      \frametitle{Cellular automata}
-      \begin{figure}
-         \centering
-         \includegraphics[width = .8\textwidth]{grid.png}
-      \end{figure}
-   }
-   \only<4>{
-      \frametitle{Cellular automata}
-      \framesubtitle{Game of life (Conway, 1970)}
-      \begin{figure}
-         \includegraphics[width = .8\textwidth]{life.png}
-      \end{figure}
+   \frametitle{Types of Computer Simulations}
 
-   }
-   \only<5>{
-      \frametitle{Cellular automata}
-      \framesubtitle{Game of life (Conway, 1970)}
-      \begin{figure}
-         \animategraphics[loop,controls, width = .8\textwidth]{10}{game_life-}{0}{148}
-         \caption{from \href{https://playgameoflife.com}{\textcolor{blue}{https://playgameoflife.com}}}
-      \end{figure}
-
-   }
+   \begin{itemize}
+      \item Key characteristics of models we want to investigate include:
+      \begin{enumerate}
+         \item intrinsic dynamics: the natural evolution of the system over time without external influences.
+         \item nonlinearity: the system's output is not directly proportional to its input, leading to complex behavior.
+      \end{enumerate}
+      \item Computer simulations allow us to:
+      \begin{enumerate}
+         \item Capture evolution of the system over time;
+         \item Capture the system's nonlinear complexity..
+      \end{enumerate}
+      \item We will focus on two main types of computer simulations: agent-based models and cellular automata.
+   \end{itemize}
 \end{frame}
-
-
 
 \section[Models of segregation]{Models of segregation}
 
@@ -275,12 +291,38 @@
    \end{columns}
 \end{frame}
 
+
 \begin{frame}
    \frametitle{Exercise}
    \begin{figure}
-      \includegraphics[width = .7\textwidth]{few_moments.jpg}
+      \includegraphics[width = .65\textwidth]{few_moments.jpg}
    \end{figure}
+\end{frame}
 
+\begin{frame}
+   \frametitle{Exercise}
+   \begin{figure}
+      \begin{tikzpicture}
+         \foreach \x in {0,.5,...,8} {
+            \pgfmathparse{\x == 0 || \x == .5 || \x == 5.5 || \x == 6 || \x == 6.5 || \x == 7 || \x == 7.5 || \x == 8 || \x == 7.5 ? 1 : 0}
+            \ifnum \pgfmathresult=1 {
+               \draw (\x, -2) circle (0.1);
+            } \else {
+               \pgfmathparse{\x != 1 && \x != 5 ? 1 : 0}
+               \ifnum \pgfmathresult=1{
+                  \draw (0+\x - .1, -1.9) rectangle (0 + \x + 0.1, -2.1);
+               } \fi
+            } \fi
+
+            \pgfmathparse{\x != 1 && \x != 5 ? 1 : 0}
+            \ifnum \pgfmathresult=1{
+               \draw[fill=green] (\x, -1.75) circle (.05);
+            } \else {
+               \draw (\x, -1.75) circle (.05);
+            } \fi
+         }
+      \end{tikzpicture}
+   \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -314,17 +356,114 @@
 \end{frame}
 
 \begin{frame}
+   \frametitle{Agent-based models}
+   \begin{block}{Agent-based models}
+      Agent-based models are discrete-time computer simulations used to study
+      the interactions between people, things, places, and time. They are
+      stochastic models built from the bottom up meaning individual agents
+      (often people in epidemiology) are assigned certain attributes.
+      \alert{The agents are programmed to behave and interact with other
+      agents and the environment in certain ways.} These interactions produce
+      emergent effects that may differ from effects of individual agents.
+   \end{block}
+\end{frame}
+
+\section{Bar Dynamics}
+\begin{frame}
+   \frametitle{When is it worth going to a bar?}
+   \only<+>{
+      \begin{figure}
+         \includegraphics[width = .65\textwidth]{barstudio.jpeg}
+      \end{figure}
+   }
+   \only<+>{
+      \begin{columns}
+         \begin{column}{.49\textwidth}
+            A simple model of bar attendance:
+            \begin{itemize}
+               \item The bar has a fixed capacity of people;
+               \item If the bar is full, nobody likes;
+               \item The decision to go to the bar depends on how crowded it was the previous day.
+               
+            \end{itemize}
+         \end{column}
+         \begin{column}{.49\textwidth}
+            \begin{figure}
+               \includegraphics[width = \textwidth]{barstudio.jpeg}
+               \caption{Bar Studio}
+            \end{figure}
+         \end{column}
+      \end{columns}
+   }
+   \only<+>{
+      \begin{columns}
+         \begin{column}{.59\textwidth}
+            Initial occupancy:
+            $$ ba_{0} = 0.2 $$
+            Word of mouth growth (order parameter):
+            $$ ba_{t+1} = r \times ba_{t} $$
+            Constraint for overcrowding (control parameter):
+            $$ ba_{t+1} = (1 - ba_{t}) $$
+            Bar Dynamics:
+            $$ ba_{t+1} = r \times ba_{t} \times (1 - ba_{t}) $$
+            
+         \end{column}
+         \begin{column}{.39\textwidth}
+            \begin{figure}
+               \includegraphics[width = \textwidth]{barstudio.jpeg}
+               \caption{Bar Studio}
+            \end{figure}
+         \end{column}
+      \end{columns}
+   }
+   \only<+>{
+      \begin{tikzpicture}
+         \node at (0,0) {\includegraphics[width = .4\textwidth]{bar_dynamics_stable.png}};
+         \node at (7,0) {\includegraphics[width = .4\textwidth]{bar_dynamics_cyclic.png}};
+         \node at (3.5,-3.5) {\includegraphics[width = .4\textwidth]{bar_dynamics_chaotic.png}};
+      \end{tikzpicture}
+   }
+   \only<+>{
+      Dynamical systems may be described by a system of equations that accounts for change over time. These equations include two types of parameters:
+
+      \begin{columns}
+         \begin{column}{.49\textwidth}
+            \begin{block}{Order parameters}
+               Tells you what the system is doing over time (its dynamics).
+
+            \end{block}
+         \end{column}
+         \begin{column}{.49\textwidth}
+            \begin{block}{Control parameters}
+               Tells you under what conditions the system does so (its constraints).
+            \end{block}
+         \end{column}
+      \end{columns}
+   }
+   \only<+>{
+      \begin{quote}
+         In nonlinear dynamics, smooth and \alert{small changes in control parameters may lead to dramatic and unpredictable changes in behavior.} (...) Radical change in the pattern usually follows from a change in control parameters and thus is an indicator of external influences.
+         \medskip
+         \par\nobreak\hfill — \textit{Nowak \& Lewenstein, 1994}
+      \end{quote}
+   }
+
+\end{frame}
+
+
+\begin{frame}
    \frametitle{Bibliography}
    \scriptsize
    \begin{enumerate}
-      \item Conway, J. (1970). Conway's game of life. Scientific American.
-      \item Galán, J. M., Izquierdo, L. R., Izquierdo, S. S., Santos, J. I., Del
-      Olmo, R., \& López-Paredes, A. (2013). Checking Simulations: Detecting and
-      Avoiding Errors and Artefacts. In B. Edmonds \& R. Meyer (Eds.),
-      Simulating Social Complexity (pp. 95–116). Springer Berlin Heidelberg.
+      %%\item Conway, J. (1970). Conway's game of life. Scientific American.
+      %%\item Galán, J. M., Izquierdo, L. R., Izquierdo, S. S., Santos, J. I., Del
+      %%Olmo, R., \& López-Paredes, A. (2013). Checking Simulations: Detecting and
+      %%Avoiding Errors and Artefacts. In B. Edmonds \& R. Meyer (Eds.),
+      %%Simulating Social Complexity (pp. 95–116). Springer Berlin Heidelberg.
       \item Epstein, J. M. (2008) "Why Model?" Journal of Artificial Societies and Social Simulation, 11(4), 12.
       \item Goldstone, R. L., \& Janssen, M. A. (2005). Computational models of collective behavior. Trends in Cognitive Sciences, 9(9), 424-430.
       \item Norman, D. A. (1983). Some observations on mental models. In D. Gentner \& A. L. Stevens (Eds), Mental models, pp . 7-14. Hillsdale, NJ: Erlbaum.
+      \item Nowak, A., \& Lewenstein, M. (1994). Dynamical systems: A tool for social psychology? In R. R. Vallacher \& A. Nowak (Eds.), Dynamical systems in social psychology (pp. 17–53). Academic Press.
       \item Schelling, T. C. (1971). DYNAMIC MODELS OF SEGREGATION. Journal of
       Mathematical Psychology, 1, 143–186.
       \item Timpone, R. J., \& Taber, C. S. (1996). Computational Modeling. London: SAGE.
@@ -337,7 +476,7 @@
         \item Find a scientific article that uses computer simulations (Google Scholar). It should be published in a peer-reviewed social science journal and have at least 10 citations.
         \item Read it.
         \item Submit the title, authors, year of publication, journal, and maximum 200 words takeaway message in Google Classroom. It should consist of at least 4 sentences: problem statement, research question/hypothesis, what they did, main finding.
-        \item Deadline: \textbf{27th April 2026, 14:59}.
+        \item Deadline: \textbf{4th December 2026, 10:59}.
     \end{enumerate}
 \end{frame}
 
